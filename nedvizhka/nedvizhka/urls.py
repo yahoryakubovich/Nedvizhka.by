@@ -22,3 +22,4 @@ urlpatterns = [
     path('', index, name="nedvizhka"),
     path('admin/', admin.site.urls),
 ]
+
