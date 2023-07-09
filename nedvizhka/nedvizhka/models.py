@@ -1,6 +1,13 @@
 from django.db import models
 
 
+# CATEGORY = [
+#     ("r", "residential"),
+#     ("n", "non-residential"),
+#     ("c", "commercial")
+# ]
+
+
 class Realty(models.Model):
     name = models.CharField(max_length=20)
     description = models.CharField(max_length=100)
@@ -15,10 +22,10 @@ class Realty(models.Model):
 
 
 class Garage(Realty):
-    CHOICES = (
-        ("Y", "Yes"),
-        ("N", "No")
-    )
+    CHOICES = [
+        ("y", "yes"),
+        ("n", "no")
+    ]
     quantity_parking_spaces = models.IntegerField()
     heating = models.Choices(CHOICES)
 
@@ -27,8 +34,29 @@ class Parking(Realty):
     quantity_parking_spaces = models.IntegerField()
 
 
-class Commercial(Realty):
-    class Meta:
-        abstract = True
+class Warehouse(Realty):
+    pass
 
 
+class Office(Realty):
+    pass
+
+
+class Trade(Realty):
+    pass
+
+
+class Industrial(Realty):
+    pass
+
+
+class Flat(Realty):
+    pass
+
+
+class House(Realty):
+    CATEGORY = [
+        ("д", "дом"),
+        ("к", "коттедж"),
+        ("у", "усадьба")
+    ]
