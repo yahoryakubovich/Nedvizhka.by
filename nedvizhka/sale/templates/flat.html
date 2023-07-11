@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Flats {% endblock %}
+{% block content %}
+    <h3><b>Продажа квартир в Минске</b></h3>
+    {% for flat in flat_list %}
+        <div class="product-card">
+            <img src="#" alt="Фото товара">
+            <div class="product-details">
+                <h2>{{ flat.title }}</h2>
+                <h2>{{ flat.address }}</h2>
+                <h2>Общая площадь: {{ flat.total_area }} м&sup2;</h2>
+                <h2>${{ flat.price }}</h2>
+                <p>Описание товара.</p>
+                <a href="#" class="buy-btn">Купить</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
