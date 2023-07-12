@@ -4,4 +4,5 @@ from .views import *
 
 urlpatterns = [
     path('flat/', FlatListView.as_view(template_name="flat.html"), name='flat'),
+    path('flat/<int:pk>', FlatDetailView.as_view(), name='flat'),
 ]
