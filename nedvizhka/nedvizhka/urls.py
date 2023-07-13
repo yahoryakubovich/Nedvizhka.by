@@ -20,6 +20,7 @@ from .views import *
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name="nedvizhka.html"), name="nedvizhka"),
+    path('about/', TemplateView.as_view(template_name="about.html"), name="about"),
     path('admin/', admin.site.urls),
     path('sale/', include("sale.urls"))
 ]
