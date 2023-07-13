@@ -27,7 +27,7 @@ header a {
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 50px;
-    font-size: 14px;
+    font-size: 12px;
     margin-right: 10px;
     background-size: 200% auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
@@ -97,12 +97,14 @@ footer {
     color: black;
     text-decoration: none;
 }
+
 .info {
     justify-content: left;
     flex-wrap: wrap;
     margin: 10px 20px;
     text-decoration: none;
 }
+
 .product-card {
     height: 360px;
     display: flex;

@@ -12,8 +12,9 @@
 <body>
 <header>
     <div class="header-buttons">
-        <a href="http://127.0.0.1:8000/admin/" class="login-button">Вход</a>
-        <a href="#" class="add-listing-button">Добавить объявление</a>
+        <a href="{% url 'login' %}" class="login-button">Вход</a>
+        <a href="{% url 'register' %}" class="login-button">Регистрация</a>
+        <a href="#" class="add-listing-button">+ Добавить объявление</a>
     </div>
 </header>
 <nav>
