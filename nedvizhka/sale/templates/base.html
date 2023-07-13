@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} Title {% endblock %} </title>
-    <link rel="stylesheet" href="{% static "/css/styles.css" %}" />
+    <link rel="stylesheet" href="{% static "/css/styles.css" %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
-    <h1>Мой красивый сайт</h1>
+    <div class="header-buttons">
+        <a href="http://127.0.0.1:8000/admin/" class="login-button">Вход</a>
+        <a href="#" class="add-listing-button">Добавить объявление</a>
+    </div>
 </header>
 <nav>
     <ul>

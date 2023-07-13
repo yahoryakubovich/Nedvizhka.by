@@ -19,7 +19,7 @@ from django.urls import path, include
 from .views import *
 
 urlpatterns = [
-    path('', index, name="nedvizhka"),
+    path('', TemplateView.as_view(template_name="nedvizhka.html"), name="nedvizhka"),
     path('admin/', admin.site.urls),
     path('sale/', include("sale.urls"))
 ]
