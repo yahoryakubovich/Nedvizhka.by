@@ -4,8 +4,14 @@ from .models import *
 from django.urls import reverse_lazy
 
 
+# class FlatListView(ListView):
+#     model = Flat
+
 class FlatListView(ListView):
     model = Flat
+
+    def get_queryset(self):
+        return super().get_queryset().filter(is_moderated=True)
 
 
 class HouseListView(ListView):

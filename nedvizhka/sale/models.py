@@ -38,6 +38,7 @@ class Realty(models.Model):
     price = models.IntegerField(default="Договорная")
     photo = models.ImageField(blank=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    is_moderated = models.BooleanField(default=False)
 
     class Meta:
         abstract = True

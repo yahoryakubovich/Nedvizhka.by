@@ -21,8 +21,9 @@ from .views import *
 urlpatterns = [
     path('', TemplateView.as_view(template_name='nedvizhka.html'), name='nedvizhka'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
-    path('register/', RegisterFormView.as_view(), name='register'),
-    path('login/', LoginFormView.as_view(), name='login'),
+    path('accounts/', include('allauth.urls')),
+    # path('register/', RegisterFormView.as_view(), name='register'),
+    # path('login/', LoginFormView.as_view(), name='login'),
     path('admin/', admin.site.urls),
     path('sale/', include("sale.urls")),
 ]

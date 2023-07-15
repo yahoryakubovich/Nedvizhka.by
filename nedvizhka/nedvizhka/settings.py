@@ -35,7 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'sale',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.apple',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.yandex',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.odnoklassniki',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +90,21 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backend.AuthenticationBackend',
+# ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'vk': {
+        'APP': {
+            'client_id': '	51704972',
+            'client_secret': 'rTs1ThRonSnGxduwdlcv',
+            'key': 'e4bb5154e4bb5154e4bb515419e7afa5d8ee4bbe4bb515480085cb3c6d088e89658a964',
+        }
+    }
+}
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -118,3 +142,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # LOGIN_REDIRECT_URL = 'nedvizhka'
+
+SITE_ID = 1
