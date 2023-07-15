@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить квартиру {% endblock %}
 {% block content %}
-        <div class="about">
-            <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа квартир</h1>
-        </div>
-        <div class="container">
+    <div class="about">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа квартир</h1>
+    </div>
+    <div class="container">
         {% for flat in flat_list %}
             <div class="product-card">
                 <img src="#" alt="Фото товара">
@@ -12,7 +12,7 @@
                     <a href="{{ flat.id }}"><h2>{{ flat.title }}</h2></a>
                     <h3>{{ flat.address }}</h3>
                     <h3>Общая площадь: {{ flat.total_area }} м&sup2;</h3>
-                    <h3>${{ flat.price }}</h3>
+                    <h3>{{ flat.price }}</h3>
                     <p>text</p>
                     <a href="#" class="buy-btn">Показать контакты</a>
                 </div>

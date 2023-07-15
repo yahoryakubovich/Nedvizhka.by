@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 RENOVATION = [
     ("N", "без отделки"),
@@ -36,6 +37,7 @@ class Realty(models.Model):
     renovation = models.CharField(choices=RENOVATION, max_length=20)
     price = models.IntegerField(default="Договорная")
     photo = models.ImageField(blank=True)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     class Meta:
         abstract = True
