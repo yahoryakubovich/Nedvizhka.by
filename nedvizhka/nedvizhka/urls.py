@@ -24,5 +24,5 @@ urlpatterns = [
     path('register/', RegisterFormView.as_view(), name='register'),
     path('login/', LoginFormView.as_view(), name='login'),
     path('admin/', admin.site.urls),
-    path('sale/', include("sale.urls"))
+    path('sale/', include("sale.urls")),
 ]
