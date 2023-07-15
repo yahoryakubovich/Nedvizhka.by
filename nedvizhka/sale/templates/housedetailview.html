@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить дом, коттедж, усадьбу {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="product-card">
+            <img src="#" alt="Фото товара">
+            <div class="product-details">
+                <div class="product-info">
+                    <a>{{ house.title }}</a>
+                    <p>Адрес: {{ house.address }}</p>
+                    <p>Общая площадь: {{ house.total_area }} м&sup2;</p>
+                    <p>Цена: ${{ house.price }}</p>
+                </div>
+            </div>
+        </div>
+        <p>{{ house.description }}</p>
+    </div>
+{% endblock %}

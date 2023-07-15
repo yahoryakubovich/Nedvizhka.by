@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Title {% endblock %} </title>
+    <link rel="stylesheet" href="{% static "/css/styles.css" %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="header-buttons">
+        <a href="{% url 'login' %}" class="login-button">Вход</a>
+        <a href="{% url 'register' %}" class="login-button">Регистрация</a>
+        <a href="#" class="add-listing-button">+ Добавить объявление</a>
+    </div>
+</header>
+<nav>
+    <ul>
+        <li><a href="{% url "nedvizhka" %}">Главная</a></li>
+        <li><a href="{% url "about" %}">О нас</a></li>
+        <li><a href="{% url "flat" %}">Продажа</a></li>
+        <li><a href="#">Контакты</a></li>
+    </ul>
+</nav>
+{% block content %}
+{% endblock %}
+<footer>
+        <p>© 2023 Недвижка.бай. Все права защищены.</p>
+</footer>
+</body>
+</html>

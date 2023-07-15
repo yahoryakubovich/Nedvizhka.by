@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить квартиру {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="product-card">
+            <img src="#" alt="Фото товара">
+            <div class="product-details">
+                <div class="product-info">
+                    <a>{{ flat.title }}</a>
+                    <p>Адрес: {{ flat.address }}</p>
+                    <p>Общая площадь: {{ flat.total_area }} м&sup2;</p>
+                    <p>Цена: ${{ flat.price }}</p>
+                </div>
+            </div>
+        </div>
+        <p>{{ flat.description }}</p>
+    </div>
+{% endblock %}
