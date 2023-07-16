@@ -4,8 +4,23 @@ from .models import *
 from django.urls import reverse_lazy
 
 
-# class FlatListView(ListView):
-#     model = Flat
+class SaleListView(ListView):
+    model = [Garage, Parking, Warehouse, Office, Trade, Industrial, Flat, House]
+    context_object_name = 'object_list'
+
+    def get_queryset(self):
+        queryset1 = Garage.objects.filter(is_moderated=True)
+        queryset2 = Parking.objects.filter(is_moderated=True)
+        queryset3 = Warehouse.objects.filter(is_moderated=True)
+        queryset4 = Office.objects.filter(is_moderated=True)
+        queryset5 = Trade.objects.filter(is_moderated=True)
+        queryset6 = Industrial.objects.filter(is_moderated=True)
+        queryset7 = Flat.objects.filter(is_moderated=True)
+        queryset8 = House.objects.filter(is_moderated=True)
+
+        return list(queryset1) + list(queryset2) + list(queryset3) + list(queryset4) + list(queryset5) + list(
+            queryset6) + list(queryset7) + list(queryset8)
+
 
 class FlatListView(ListView):
     model = Flat

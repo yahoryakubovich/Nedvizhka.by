@@ -1,8 +1,8 @@
-from django.contrib import admin
 from django.urls import path
 from .views import *
 
 urlpatterns = [
+    path('', SaleListView.as_view(template_name="sale.html"), name="sale"),
     path('flat/', FlatListView.as_view(template_name="flat.html"), name='flat'),
     path('flat/<int:pk>', FlatDetailView.as_view(), name='flat'),
     path('flat/create/', FlatCreateView.as_view()),
