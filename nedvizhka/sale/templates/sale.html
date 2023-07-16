@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить недвижимость {% endblock %}
 {% block content %}
-    <div class="about">
+    <div class="navigation">
         <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа</h1>
+    </div>
+    <div class="option">
+            <a href="{% url 'flat' %}">Квартиры</a>
+            <a href="{% url 'house' %}">Дома, коттеджи, усадьбы</a>
+            <a href="#">Гаражи</a>
+            <a href="#">Стоянки</a>
+            <a href="#">Офисы</a>
+            <a href="#">Склады</a>
+            <a href="#">Торговые павильоны</a>
+            <a href="#">Промышленные помещения</a>
     </div>
     <div class="container">
         {% for obj in object_list %}

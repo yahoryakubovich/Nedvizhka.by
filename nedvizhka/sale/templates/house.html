@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить дом, коттедж, усадьбу {% endblock %}
 {% block content %}
+    <div class="navigation">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > <a href="{% url "sale" %}">Продажа</a> > Продажа домов, коттеджей, усадьб</h1>
+    </div>
     <div class="container">
         {% for house in house_list %}
             <div class="product-card">

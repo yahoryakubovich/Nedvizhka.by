@@ -120,7 +120,7 @@ footer {
 }
 
 
-.about {
+.navigation {
     background-color: ghostwhite;
     display: flex;
     justify-content: left;
@@ -130,11 +130,21 @@ footer {
     text-decoration: none;
 }
 
-.about a {
+.navigation a {
     color: black;
     text-decoration: none;
 }
 
+.option {
+    display: flex;
+    margin: 10px 100px;
+}
+
+.option a {
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+}
 
 .about-us {
     justify-content: left;
