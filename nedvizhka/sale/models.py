@@ -36,7 +36,7 @@ class Realty(models.Model):
     condition = models.CharField(choices=CONDITION, max_length=20)
     renovation = models.CharField(choices=RENOVATION, max_length=20)
     price = models.IntegerField(default="Договорная")
-    photo = models.ImageField(blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to="images")
     creator = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     is_moderated = models.BooleanField(default=False)
 
