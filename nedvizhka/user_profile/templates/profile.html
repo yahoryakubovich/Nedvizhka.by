@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <div class="product-info">
-            <h2>Профиль пользователя</h2>
+            <h2>Добро пожаловать в Ваш личный кабинет, <b>{{ profile.first_name }}</b>!</h2>
             <p>Имя: {{ profile.first_name }}</p>
             <p>Фамилия: {{ profile.last_name }}</p>
             {% if profile.user.email %}
@@ -12,6 +12,9 @@
             <p>Дата регистрации: {{ profile.user.date_joined }}</p>
             <button>
                 <a href="{% url "edit_profile" %}">Изменить</a>
+            </button>
+            <button>
+                <a href="{% url "account_logout" %}">Выйти</a>
             </button>
         </div>
     </div>
