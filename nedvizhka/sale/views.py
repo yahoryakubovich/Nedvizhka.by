@@ -42,7 +42,7 @@ class FlatCreateView(LoginRequiredMixin, CreateView):
     model = Flat
     fields = '__all__'
     template_name = 'flatcreateview.html'
-    login_url = 'login'
+    login_url = ('account_login')
     success_url = reverse_lazy('flat')
 
     def form_valid(self, form):
@@ -57,7 +57,7 @@ class HouseCreateView(LoginRequiredMixin, CreateView):
     model = House
     fields = '__all__'
     template_name = 'housecreateview.html'
-    login_url = 'login'
+    login_url = ('account_login')
     success_url = reverse_lazy('house')
 
     def form_valid(self, form):

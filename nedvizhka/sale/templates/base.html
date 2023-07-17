@@ -21,19 +21,19 @@
         <li><a href="{% url "nedvizhka" %}">Главная</a></li>
         <li><a href="{% url "flat" %}">Продажа</a></li>
         <li><a href="{% url "about" %}">О нас</a></li>
-        <li><a href="#">Блог</a></li>
+        <li><a href="{% url "profile" %}">Профиль</a></li>
     </ul>
 </nav>
 <div class="option">
-            <a href="{% url 'flat' %}">Квартиры</a>
-            <a href="{% url 'house' %}">Дома, коттеджи, усадьбы</a>
-            <a href="#">Гаражи</a>
-            <a href="#">Стоянки</a>
-            <a href="#">Офисы</a>
-            <a href="#">Склады</a>
-            <a href="#">Торговые павильоны</a>
-            <a href="#">Промышленные помещения</a>
-    </div>
+    <a href="{% url 'flat' %}">Квартиры</a>
+    <a href="{% url 'house' %}">Дома, коттеджи, усадьбы</a>
+    <a href="#">Гаражи</a>
+    <a href="#">Стоянки</a>
+    <a href="#">Офисы</a>
+    <a href="#">Склады</a>
+    <a href="#">Торговые павильоны</a>
+    <a href="#">Промышленные помещения</a>
+</div>
 {% block content %}
 {% endblock %}
 <footer class="footer">

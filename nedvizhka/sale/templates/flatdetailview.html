@@ -1,18 +1,36 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить квартиру {% endblock %}
+
 {% block content %}
     <div class="container">
-        <div class="product-card">
-            {% if flat.image %}<img style="max-height: 360px" src="{{ flat.image.url }}"> {% endif %}
-            <div class="product-details">
-                <div class="product-info">
-                    <a>{{ flat.title }}</a>
-                    <p>Адрес: {{ flat.address }}</p>
-                    <p>Общая площадь: {{ flat.total_area }} м&sup2;</p>
-                    <p>Цена: ${{ flat.price }}</p>
-                </div>
+        <div class="address-title">
+            <p>{{ flat.address }}</p>
+            <h2>{{ flat.title }}</h2>
+            <div class="product-photo">
+                {% if flat.image %}
+                    <img style="max-height: 360px" src="{{ flat.image.url }}">
+                {% endif %}
+            </div>
+
+            <div><h2>Описание: </h2>
+                {{ flat.description }}
+            </div>
+            <div class="parameters">
+                <h2>Параметры объекта</h2>
+                <p>Количество комнат: {{ flat.number_of_rooms }}</p>
+                <p>Общая площадь: {{ flat.total_area }} м²</p>
+                <p>Жилая площадь: {{ flat.living_area }} м²</p>
+                <p>Площадь кухни: {{ flat.kitchen }} м²</p>
+                <p>Год постройки: {{ flat.year_of_construction }}</p>
+                <p>Этаж: {{ flat.floor_number }}</p>
+                <p>Состояние: {{ flat.get_condition_display }}</p>
+                <p>Ремонт: {{ flat.get_renovation_display }}</p>
+                {% if flat.facilities %}
+                    <p>{{ flat.facilities }}</p>
+                {% endif %}
             </div>
         </div>
-        <p>{{ flat.description }}</p>
+    </div>
     </div>
 {% endblock %}
+
