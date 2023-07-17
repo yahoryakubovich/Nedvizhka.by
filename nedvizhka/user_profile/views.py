@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from .models import Profile
+from django.views.generic import ListView
+from sale.models import *
 
 
 @receiver(post_save, sender=User)
@@ -18,7 +20,12 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['profile'] = Profile.objects.get(user=self.request.user)
+        profile = Profile.objects.get(user=self.request.user)
+        flat_queryset = Flat.objects.filter(creator=self.request.user)
+        house_queryset = House.objects.filter(creator=self.request.user)
+        context['profile'] = profile
+        context['flat_queryset'] = flat_queryset
+        context['house_queryset'] = house_queryset
         return context
 
 

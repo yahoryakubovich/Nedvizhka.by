@@ -16,6 +16,25 @@
             <button>
                 <a href="{% url "account_logout" %}">Выйти</a>
             </button>
+            <h2>Список моих объявлений:</h2>
+            {% if flat_queryset %}
+                <h3>Квартиры:</h3>
+                {% for flat in flat_queryset %}
+                    <p>{{ flat.title }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if house_queryset %}
+                <h3>Дома, коттеджи, усадьбы:</h3>
+                {% for house in house_queryset %}
+                    <p></p>{{ house.title }}
+                {% endfor %}
+            {% endif %}
+            {% if garage_queryset %}
+                <h3>Гаражи:</h3>
+                {% for garage in garage_queryset %}
+                    <p></p>{{ garage.title }}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}
