@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: добавление объявления {% endblock %}
 {% block content %}
-    <form action="" method="post">{% csrf_token %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Создать</button>
+        <button type="submit">Сохранить</button>
     </form>
 {% endblock %}
