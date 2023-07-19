@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: добавить объявление {% endblock %}
+{% block content %}
+    <div class="navigation">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Профиль > Cоздание объявления</h1>
+    </div>
+    <div class="about-us">
+        <h1>Выберите тип недвижимости: </h1>
+        <h2>Недвижимость</h2>
+        <ul>
+            <li><a href="{% url "createflat" %}">Квартира</a></li>
+            <li><a href="{% url "createhouse" %}">Дом, коттедж, усадьба</a></li>
+            <li><a href="{% url "createflat" %}">Гараж</a></li>
+            <li><a href="{% url "createhouse" %}">Стоянка</a></li>
+        </ul>
+        <h2>Коммерческая</h2>
+        <ul>
+            <li><a href="{% url "createflat" %}">Офис</a></li>
+            <li><a href="{% url "createhouse" %}">Склад</a></li>
+            <li><a href="{% url "createflat" %}">Торговый павильон</a></li>
+            <li><a href="{% url "createhouse" %}">Промышленные помещения</a></li>
+        </ul>
+    </div>
+{% endblock %}
