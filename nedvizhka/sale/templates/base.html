@@ -27,12 +27,12 @@
 <div class="option">
     <a href="{% url "flat" %}">Квартиры</a>
     <a href="{% url "house" %}">Дома, коттеджи, усадьбы</a>
-    <a href="#">Гаражи</a>
-    <a href="#">Стоянки</a>
-    <a href="#">Офисы</a>
-    <a href="#">Склады</a>
-    <a href="#">Торговые павильоны</a>
-    <a href="#">Промышленные помещения</a>
+    <a href="{% url "garage" %}">Гаражи</a>
+    <a href="{% url "parking" %}">Стоянки</a>
+    <a href="{% url "office" %}">Офисы</a>
+    <a href="{% url "warehouse" %}">Склады</a>
+    <a href="{% url "trade" %}">Торговые павильоны</a>
+    <a href="{% url "industrial" %}">Промышленные помещения</a>
 </div>
 {% block content %}
 {% endblock %}
@@ -57,19 +57,19 @@
     <div class="column">
         <h4>Коммерческая</h4>
         <ul>
-            <li><a href="#">Офисы</a></li>
-            <li><a href="#">Склады</a></li>
-            <li><a href="#">Торговые павильоны</a></li>
-            <li><a href="#">Промышленные помещения</a></li>
+            <li><a href="{% url "office" %}">Офисы</a></li>
+            <li><a href="{% url "warehouse" %}">Склады</a></li>
+            <li><a href="{% url "trade" %}">Торговые павильоны</a></li>
+            <li><a href="{% url "industrial" %}">Промышленные помещения</a></li>
         </ul>
     </div>
     <div class="column">
         <h4>Недвижимость</h4>
         <ul>
-            <li><a href="#">Квартиры</a></li>
-            <li><a href="#">Дома, коттеджи, усадьбы</a></li>
-            <li><a href="#">Гаражи</a></li>
-            <li><a href="#">Стоянки</a></li>
+            <li><a href="{% url "flat" %}">Квартиры</a></li>
+            <li><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
+            <li><a href="{% url "garage" %}">Гаражи</a></li>
+            <li><a href="{% url "parking" %}">Стоянки</a></li>
         </ul>
     </div>
 </footer>

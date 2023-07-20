@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить торговый павильон {% endblock %}
+{% block content %}
+    <div class="navigation">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа торговых павильон</h1>
+    </div>
+    <div class="container">
+        {% for trade in trade_list %}
+            <div class="product-card">
+                {% if trade.image %}<img style="max-height: 360px" src="{{ trade.image.url }}"> {% endif %}
+                <div class="product-details">
+                    <a href="{{ trade.id }}"><h2>{{ trade.title }}</h2></a>
+                    <h3>{{ trade.address }}</h3>
+                    <h3>Общая площадь: {{ trade.total_area }} м&sup2;</h3>
+                    <h3><b>$</b>{{ trade.price }}</h3>
+                    <p>text</p>
+                    <a href="#" class="buy-btn">Показать контакты</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

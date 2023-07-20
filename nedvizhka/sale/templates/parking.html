@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить стоянку {% endblock %}
+{% block content %}
+    <div class="navigation">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа стоянок</h1>
+    </div>
+    <div class="container">
+        {% for parking in parking_list %}
+            <div class="product-card">
+                {% if parking.image %}<img style="max-height: 360px" src="{{ parking.image.url }}"> {% endif %}
+                <div class="product-details">
+                    <a href="{{ parking.id }}"><h2>{{ parking.title }}</h2></a>
+                    <h3>{{ parking.address }}</h3>
+                    <h3>Общая площадь: {{ parking.total_area }} м&sup2;</h3>
+                    <h3><b>$</b>{{ parking.price }}</h3>
+                    <p>text</p>
+                    <a href="#" class="buy-btn">Показать контакты</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

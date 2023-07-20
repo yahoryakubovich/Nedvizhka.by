@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить стоянку {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="address-title">
+            <p>г. Минск {{ parking.address }}</p>
+            <h2>{{ parking.title }}</h2>
+            <div class="product-photo">
+                {% if parking.image %}
+                    <img style="max-height: 360px" src="{{ parking.image.url }}">
+                {% endif %}
+            </div>
+
+            <div><h2>Описание: </h2>
+                {{ parking.description }}
+            </div>
+            <div class="parameters">
+                <h2>Параметры объекта</h2>
+                <p>Общая площадь: {{ parking.total_area }} м²</p>
+                <p>Год постройки: {{ parking.year_of_construction }}</p>
+                <p>Ремонт: {{ parking.get_renovation_display }}</p>
+                {% if parking.facilities %}
+                    <p>{{ parking.facilities }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить промышленное помещение {% endblock %}
+{% block content %}
+    <div class="navigation">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа промышленных помещений</h1>
+    </div>
+    <div class="container">
+        {% for industrial in industrial_list %}
+            <div class="product-card">
+                {% if industrial.image %}<img style="max-height: 360px" src="{{ industrial.image.url }}"> {% endif %}
+                <div class="product-details">
+                    <a href="{{ industrial.id }}"><h2>{{ industrial.title }}</h2></a>
+                    <h3>{{ industrial.address }}</h3>
+                    <h3>Общая площадь: {{ industrial.total_area }} м&sup2;</h3>
+                    <h3><b>$</b>{{ industrial.price }}</h3>
+                    <p>text</p>
+                    <a href="#" class="buy-btn">Показать контакты</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

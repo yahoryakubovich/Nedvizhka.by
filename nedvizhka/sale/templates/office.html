@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить офис {% endblock %}
+{% block content %}
+    <div class="navigation">
+        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа офисов</h1>
+    </div>
+    <div class="container">
+        {% for office in office_list %}
+            <div class="product-card">
+                {% if office.image %}<img style="max-height: 360px" src="{{ office.image.url }}"> {% endif %}
+                <div class="product-details">
+                    <a href="{{ office.id }}"><h2>{{ office.title }}</h2></a>
+                    <h3>{{ office.address }}</h3>
+                    <h3>Общая площадь: {{ office.total_area }} м&sup2;</h3>
+                    <h3><b>$</b>{{ office.price }}</h3>
+                    <p>text</p>
+                    <a href="#" class="buy-btn">Показать контакты</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
