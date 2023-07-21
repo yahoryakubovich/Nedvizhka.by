@@ -147,6 +147,51 @@ footer {
     margin-right: 10px;
 }
 
+.search {
+    justify-content: center;
+}
+
+
+.search button {
+    outline: none;
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin: auto 0 0 0;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    transition: .5s;
+    bottom: 20px;
+    right: 20px;
+}
+
+.search button,
+button:active,
+button:focus {
+    border: none;
+}
+
+.search button:hover {
+    background-position: right center;
+}
+
+.search label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.search input {
+    width: 600px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 .about-us {
     justify-content: left;
     flex-wrap: wrap;
@@ -212,7 +257,6 @@ footer {
     background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
     padding: 10px 20px;
     text-decoration: none;
-    color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 5px;

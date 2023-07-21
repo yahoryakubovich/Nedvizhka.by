@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    {% if results %}
-        <ul>
+    <div class="container">
+        {% if results %}
             {% for obj in results %}
-                <li>{{ obj.title }} - {{ obj.total_area }} - {{ obj.price }}</li>
+                <div class="product-card">
+                    {% if obj.image %}<img style="max-height: 360px" src="{{ obj.image.url }}"> {% endif %}
+                    <div class="product-details">
+                        <a href="{{ obj.id }}"><h2>{{ obj.title }}</h2></a>
+                        <h3>{{ obj.address }}</h3>
+                        <h3>Общая площадь: {{ obj.total_area }} м&sup2;</h3>
+                        <h3><b>$</b>{{ obj.price }}</h3>
+                        <p>text</p>
+                        <a href="#" class="buy-btn">Показать контакты</a>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p>Ничего не найдено.</p>
-    {% endif %}
+        {% else %}
+            <p>Ничего не найдено.</p>
+        {% endif %}
+    </div>
 {% endblock %}
