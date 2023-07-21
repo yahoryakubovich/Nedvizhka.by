@@ -1,18 +1,29 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить дом, коттедж, усадьбу {% endblock %}
+
 {% block content %}
     <div class="container">
-        <div class="product-card">
-            <img src="#" alt="Фото товара">
-            <div class="product-details">
-                <div class="product-info">
-                    <a>{{ house.title }}</a>
-                    <p>Адрес: {{ house.address }}</p>
-                    <p>Общая площадь: {{ house.total_area }} м&sup2;</p>
-                    <p>Цена: ${{ house.price }}</p>
-                </div>
+        <div class="address-title">
+            <p>г. Минск {{ house.address }}</p>
+            <h2>{{ house.title }}</h2>
+            <div class="product-photo">
+                {% if house.image %}
+                    <img style="max-height: 360px" src="{{ house.image.url }}">
+                {% endif %}
+            </div>
+
+            <div><h2>Описание: </h2>
+                {{ house.description }}
+            </div>
+            <div class="parameters">
+                <h2>Параметры объекта</h2>
+                <p>Общая площадь: {{ house.total_area }} м²</p>
+                <p>Год постройки: {{ house.year_of_construction }}</p>
+                <p>Ремонт: {{ house.get_renovation_display }}</p>
+                {% if house.facilities %}
+                    <p>{{ house.facilities }}</p>
+                {% endif %}
             </div>
         </div>
-        <p>{{ house.description }}</p>
     </div>
 {% endblock %}

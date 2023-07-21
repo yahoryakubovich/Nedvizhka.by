@@ -165,3 +165,5 @@ class HouseCreateView(LoginRequiredMixin, CreateView):
 
     def form_invalid(self, form):
         return super(HouseCreateView, self).form_valid(form)
+
+

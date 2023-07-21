@@ -7,7 +7,7 @@
     <div class="container">
         {% for house in house_list %}
             <div class="product-card">
-                <img src="#" alt="Фото товара">
+                 {% if house.image %}<img style="max-height: 360px" src="{{ house.image.url }}"> {% endif %}
                 <div class="product-details">
                     <a href="{{ house.id }}"><h2>{{ house.title }}</h2></a>
                     <h3>{{ house.address }}</h3>

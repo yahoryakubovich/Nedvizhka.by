@@ -33,7 +33,7 @@ class Realty(models.Model):
     total_area = models.FloatField()
     address = models.CharField(max_length=80)
     facilities = models.CharField(max_length=500, blank=True)
-    condition = models.CharField(choices=CONDITION, max_length=20)
+    condition = models.CharField(choices=CONDITION, max_length=20, null=True, blank=True)
     renovation = models.CharField(choices=RENOVATION, max_length=20)
     price = models.IntegerField(default="Договорная")
     image = models.ImageField(null=True, blank=True, upload_to="images")
@@ -63,6 +63,8 @@ class Parking(Realty):
 
 class Warehouse(Realty):
     number_of_separate_premises = models.IntegerField()
+    condition = None
+    renovation = None
 
     def __str__(self):
         return self.title

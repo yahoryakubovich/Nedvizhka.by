@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if results %}
+        <ul>
+            {% for obj in results %}
+                <li>{{ obj.title }} - {{ obj.total_area }} - {{ obj.price }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ничего не найдено.</p>
+    {% endif %}
+{% endblock %}

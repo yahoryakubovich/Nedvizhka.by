@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить квартиру {% endblock %}
 {% block content %}
+    <form method="GET" action="{% url 'real_estate_search' %}">
+        <label for="id_search">Поиск:</label>
+        <input type="text" name="search" id="id_search" placeholder="Введите поисковый запрос...">
+        <button type="submit">Поиск</button>
+    </form>
     <div class="about-us">
         <h2>Найдите свою идеальную недвижимость</h2>
         <p>На нашем сайте вы найдете широкий выбор недвижимости для продажи и аренды. Мы предлагаем квартиры, дома,

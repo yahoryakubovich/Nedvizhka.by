@@ -7,7 +7,7 @@
     <div class="container">
         {% for warehouse in warehouse_list %}
             <div class="product-card">
-                {% if garage.image %}<img style="max-height: 360px" src="{{ warehouse.image.url }}"> {% endif %}
+                {% if warehouse.image %}<img style="max-height: 360px" src="{{ warehouse.image.url }}"> {% endif %}
                 <div class="product-details">
                     <a href="{{ warehouse.id }}"><h2>{{ warehouse.title }}</h2></a>
                     <h3>{{ warehouse.address }}</h3>

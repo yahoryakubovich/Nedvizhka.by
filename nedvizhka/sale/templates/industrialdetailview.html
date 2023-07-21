@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить промышленное помещение {% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <div class="container">
+        <div class="address-title">
+            <p>г. Минск {{ industrial.address }}</p>
+            <h2>{{ industrial.title }}</h2>
+            <div class="product-photo">
+                {% if industrial.image %}
+                    <img style="max-height: 360px" src="{{ industrial.image.url }}">
+                {% endif %}
+            </div>
+
+            <div><h2>Описание: </h2>
+                {{ industrial.description }}
+            </div>
+            <div class="parameters">
+                <h2>Параметры объекта</h2>
+                <p>Общая площадь: {{ industrial.total_area }} м²</p>
+                <p>Год постройки: {{ industrial.year_of_construction }}</p>
+                <p>Ремонт: {{ industrial.get_renovation_display }}</p>
+                {% if industrial.facilities %}
+                    <p>{{ industrial.facilities }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

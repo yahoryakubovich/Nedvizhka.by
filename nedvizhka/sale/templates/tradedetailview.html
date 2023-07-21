@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: купить офис {% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <div class="container">
+        <div class="address-title">
+            <p>г. Минск {{ trade.address }}</p>
+            <h2>{{ trade.title }}</h2>
+            <div class="product-photo">
+                {% if trade.image %}
+                    <img style="max-height: 360px" src="{{ trade.image.url }}">
+                {% endif %}
+            </div>
+
+            <div><h2>Описание: </h2>
+                {{ trade.description }}
+            </div>
+            <div class="parameters">
+                <h2>Параметры объекта</h2>
+                <p>Общая площадь: {{ trade.total_area }} м²</p>
+                <p>Год постройки: {{ trade.year_of_construction }}</p>
+                <p>Ремонт: {{ trade.get_renovation_display }}</p>
+                {% if trade.facilities %}
+                    <p>{{ trade.facilities }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
