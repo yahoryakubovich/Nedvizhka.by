@@ -9,12 +9,12 @@
             <div class="product-card">
                 {% if parking.image %}<img style="max-height: 360px" src="{{ parking.image.url }}"> {% endif %}
                 <div class="product-details">
-                    <a href="{{ parking.id }}"><h2>{{ parking.title }}</h2></a>
+                   <h2>{{ parking.title }}</h2>
                     <h3>{{ parking.address }}</h3>
                     <h3>Общая площадь: {{ parking.total_area }} м&sup2;</h3>
                     <h3><b>$</b>{{ parking.price }}</h3>
                     <p>text</p>
-                    <a href="#" class="buy-btn">Показать контакты</a>
+                    <a href="{{ parking.id }}" class="buy-btn">Показать контакты</a>
                 </div>
             </div>
         {% endfor %}

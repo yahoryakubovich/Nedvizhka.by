@@ -9,12 +9,12 @@
             <div class="product-card">
                 {% if trade.image %}<img style="max-height: 360px" src="{{ trade.image.url }}"> {% endif %}
                 <div class="product-details">
-                    <a href="{{ trade.id }}"><h2>{{ trade.title }}</h2></a>
+                    <h2>{{ trade.title }}</h2>
                     <h3>{{ trade.address }}</h3>
                     <h3>Общая площадь: {{ trade.total_area }} м&sup2;</h3>
                     <h3><b>$</b>{{ trade.price }}</h3>
                     <p>text</p>
-                    <a href="#" class="buy-btn">Показать контакты</a>
+                    <a href="{{ trade.id }}" class="buy-btn">Показать контакты</a>
                 </div>
             </div>
         {% endfor %}

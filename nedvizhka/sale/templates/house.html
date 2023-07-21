@@ -9,12 +9,12 @@
             <div class="product-card">
                  {% if house.image %}<img style="max-height: 360px" src="{{ house.image.url }}"> {% endif %}
                 <div class="product-details">
-                    <a href="{{ house.id }}"><h2>{{ house.title }}</h2></a>
+                    <h2>{{ house.title }}</h2>
                     <h3>{{ house.address }}</h3>
                     <h3>Общая площадь: {{ house.total_area }} м&sup2;</h3>
                     <h3>${{ house.price }}</h3>
                     <p>text</p>
-                    <a href="#" class="buy-btn">Показать контакты</a>
+                    <a href="{{ house.id }}" class="buy-btn">Показать контакты</a>
                 </div>
             </div>
         {% endfor %}
