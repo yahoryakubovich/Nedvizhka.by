@@ -11,9 +11,9 @@
                 <div class="product-details">
                     <h2>{{ flat.title }}</h2>
                     <h3>{{ flat.address }}</h3>
-                    <h3>Общая площадь: {{ flat.total_area }} м&sup2;</h3>
                     <h3><b>$</b>{{ flat.price }}</h3>
-                    <p>text</p>
+                    <h3>Общая площадь: {{ flat.total_area }} м&sup2;</h3>
+                    <p>{{ flat.description|slice:":250" }}...</p>
                     <a href="{{ flat.id }}" class="buy-btn">Показать контакты</a>
                 </div>
             </div>

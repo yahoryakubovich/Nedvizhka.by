@@ -28,6 +28,9 @@
                 {% if flat.facilities %}
                     <p>{{ flat.facilities }}</p>
                 {% endif %}
+                <h2>Контакты: </h2>
+                <p>Имя: {{ flat.creator.profile.first_name }}</p>
+                <p>Номер телефона: {{ flat.creator.profile.phone_number }}</p>
             </div>
         </div>
     </div>

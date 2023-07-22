@@ -14,7 +14,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/nedvizhka/sale/templates" />
-        <option value="$MODULE_DIR$/nedvizhka/nedvizhka/templates" />
+        <option value="$MODULE_DIR$/nedvizhka/user_profile/templates" />
       </list>
     </option>
   </component>

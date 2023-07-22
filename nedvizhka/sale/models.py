@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 
 RENOVATION = [
@@ -28,14 +29,14 @@ CATEGORY = [
 
 
 class Realty(models.Model):
-    title = models.CharField(max_length=50)
-    description = models.CharField(max_length=500)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=5000)
     total_area = models.FloatField()
     address = models.CharField(max_length=80)
-    facilities = models.CharField(max_length=500, blank=True)
+    facilities = models.CharField(max_length=2000, blank=True)
     condition = models.CharField(choices=CONDITION, max_length=20, null=True, blank=True)
     renovation = models.CharField(choices=RENOVATION, max_length=20)
-    price = models.IntegerField(default="Договорная")
+    price = models.IntegerField()
     image = models.ImageField(null=True, blank=True, upload_to="images")
     creator = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     is_moderated = models.BooleanField(default=False)

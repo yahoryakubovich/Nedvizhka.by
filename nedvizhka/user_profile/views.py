@@ -23,16 +23,28 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         profile = Profile.objects.get(user=self.request.user)
         flat_queryset = Flat.objects.filter(creator=self.request.user)
         house_queryset = House.objects.filter(creator=self.request.user)
+        garage_queryset = Garage.objects.filter(creator=self.request.user)
+        parking_queryset = Parking.objects.filter(creator=self.request.user)
+        warehouse_queryset = Warehouse.objects.filter(creator=self.request.user)
+        office_queryset = Office.objects.filter(creator=self.request.user)
+        trade_queryset = Trade.objects.filter(creator=self.request.user)
+        industrial_queryset = Industrial.objects.filter(creator=self.request.user)
         context['profile'] = profile
         context['flat_queryset'] = flat_queryset
         context['house_queryset'] = house_queryset
+        context['garage_queryset'] = garage_queryset
+        context['parking_queryset'] = parking_queryset
+        context['warehouse_queryset'] = warehouse_queryset
+        context['office_queryset'] = office_queryset
+        context['trade_queryset'] = trade_queryset
+        context['industrial_queryset'] = industrial_queryset
         return context
 
 
 class EditProfileView(LoginRequiredMixin, UpdateView):
     model = Profile
     template_name = 'edit_profile.html'
-    fields = ['first_name', 'last_name']
+    fields = ['first_name', 'last_name', 'phone_number']
     success_url = reverse_lazy('profile')
 
     def get_object(self, queryset=None):

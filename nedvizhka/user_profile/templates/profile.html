@@ -9,6 +9,9 @@
             {% if profile.user.email %}
                 <p>Электронная почта: {{ profile.user.email }}</p>
             {% endif %}
+            {% if profile.phone_number %}
+                <p>Номер телефона: {{ profile.phone_number }}</p>
+            {% endif %}
             <p>Дата регистрации: {{ profile.user.date_joined }}</p>
             <button>
                 <a href="{% url "edit_profile" %}">Изменить</a>
@@ -26,13 +29,43 @@
             {% if house_queryset %}
                 <h3>Дома, коттеджи, усадьбы:</h3>
                 {% for house in house_queryset %}
-                    <p></p>{{ house.title }}
+                    <p>{{ house.title }}</p>
                 {% endfor %}
             {% endif %}
             {% if garage_queryset %}
                 <h3>Гаражи:</h3>
                 {% for garage in garage_queryset %}
-                    <p></p>{{ garage.title }}
+                    <p>{{ garage.title }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if parking_queryset %}
+                <h3>Стоянки:</h3>
+                {% for parking in parking_queryset %}
+                    <p>{{ parking.title }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if warehouse_queryset %}
+                <h3>Склады:</h3>
+                {% for warehouse in warehouse_queryset %}
+                    <p>{{ warehouse.title }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if office_queryset %}
+                <h3>Офисы:</h3>
+                {% for office in office_queryset %}
+                    <p></p>{{ office.title }}
+                {% endfor %}
+            {% endif %}
+            {% if trade_queryset %}
+                <h3>Торговые павильоны:</h3>
+                {% for trade in trade_queryset %}
+                    <p></p>{{ trade.title }}
+                {% endfor %}
+            {% endif %}
+            {% if industrial_queryset %}
+                <h3>Промышленные помещения:</h3>
+                {% for industrial in industrial_queryset %}
+                    <p></p>{{ industrial.title }}
                 {% endfor %}
             {% endif %}
         </div>
