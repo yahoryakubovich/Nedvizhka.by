@@ -48,6 +48,7 @@ class Garage(Realty):
     quantity_parking_spaces = models.IntegerField()
     heating = models.CharField(choices=HEATING, max_length=20)
     condition = None
+    renovation = None
 
     def __str__(self):
         return self.title
@@ -56,6 +57,7 @@ class Garage(Realty):
 class Parking(Realty):
     quantity_parking_spaces = models.IntegerField()
     condition = None
+    renovation = None
 
     def __str__(self):
         return self.title
@@ -79,6 +81,7 @@ class Office(Realty):
 
 class Trade(Realty):
     location = models.CharField(choices=LOCATION, max_length=20)
+    renovation = None
 
     def __str__(self):
         return self.title
@@ -86,6 +89,8 @@ class Trade(Realty):
 
 class Industrial(Realty):
     number_of_separate_premises = models.IntegerField()
+    condition = None
+    renovation = None
 
     def __str__(self):
         return self.title
