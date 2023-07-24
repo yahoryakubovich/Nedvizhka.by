@@ -144,7 +144,7 @@ class FlatCreateView(LoginRequiredMixin, CreateView):
     model = Flat
     form_class = FlatForm
     template_name = 'flatcreateview.html'
-    login_url = ('account_login')
+    login_url = 'account_login'
     success_url = reverse_lazy('profile')
 
     def form_valid(self, form):
@@ -154,16 +154,77 @@ class FlatCreateView(LoginRequiredMixin, CreateView):
 
 class HouseCreateView(LoginRequiredMixin, CreateView):
     model = House
-    fields = '__all__'
+    form_class = HouseForm
     template_name = 'housecreateview.html'
-    login_url = ('account_login')
-    success_url = reverse_lazy('house')
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
 
     def form_valid(self, form):
-        form.save()
-        return super(HouseCreateView, self).form_valid(form)
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
-    def form_invalid(self, form):
-        return super(HouseCreateView, self).form_valid(form)
+class GarageCreateView(LoginRequiredMixin, CreateView):
+    model = Garage
+    form_class = GarageForm
+    template_name = 'garagecreateview.html'
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
 
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
+class ParkingCreateView(LoginRequiredMixin, CreateView):
+    model = Parking
+    form_class = ParkingForm
+    template_name = 'parkingcreateview.html'
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+class WarehouseCreateView(LoginRequiredMixin, CreateView):
+    model = Warehouse
+    form_class = WarehouseForm
+    template_name = 'warehousecreateview.html'
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+class OfficeCreateView(LoginRequiredMixin, CreateView):
+    model = Office
+    form_class = OfficeForm
+    template_name = 'officecreateview.html'
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+class TradeCreateView(LoginRequiredMixin, CreateView):
+    model = Trade
+    form_class = TradeForm
+    template_name = 'tradecreateview.html'
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
+
+class IndustrialCreateView(LoginRequiredMixin, CreateView):
+    model = Industrial
+    form_class = IndustrialForm
+    template_name = 'industrialcreateview.html'
+    login_url = 'account_login'
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)

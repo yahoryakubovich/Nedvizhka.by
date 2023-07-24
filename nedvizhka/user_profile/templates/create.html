@@ -10,15 +10,15 @@
         <ul>
             <li><a href="{% url "createflat" %}">Квартира</a></li>
             <li><a href="{% url "createhouse" %}">Дом, коттедж, усадьба</a></li>
-            <li><a href="{% url "createflat" %}">Гараж</a></li>
-            <li><a href="{% url "createhouse" %}">Стоянка</a></li>
+            <li><a href="{% url "creategarage" %}">Гараж</a></li>
+            <li><a href="{% url "createparking" %}">Стоянка</a></li>
         </ul>
         <h2>Коммерческая</h2>
         <ul>
-            <li><a href="{% url "createflat" %}">Офис</a></li>
-            <li><a href="{% url "createhouse" %}">Склад</a></li>
-            <li><a href="{% url "createflat" %}">Торговый павильон</a></li>
-            <li><a href="{% url "createhouse" %}">Промышленные помещения</a></li>
+            <li><a href="{% url "createwarehouse" %}">Склад</a></li>
+            <li><a href="{% url "createoffice" %}">Офис</a></li>
+            <li><a href="{% url "createtrade" %}">Торговый павильон</a></li>
+            <li><a href="{% url "createindustrial" %}">Промышленные помещения</a></li>
         </ul>
     </div>
 {% endblock %}
