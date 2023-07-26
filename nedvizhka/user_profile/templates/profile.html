@@ -23,7 +23,7 @@
             {% if flat_queryset %}
                 <h3>Квартиры:</h3>
                 {% for flat in flat_queryset %}
-                    <p>{{ flat.title }}</p>
+                    <a href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}"><p>{{ flat.title }}</p></a>
                 {% endfor %}
             {% endif %}
             {% if house_queryset %}

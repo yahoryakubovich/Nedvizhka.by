@@ -120,6 +120,15 @@ footer {
     background-color: ghostwhite;
 }
 
+.ad {
+  width: 300px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.about-us .ad {
+  display: inline-block;
+}
 
 .navigation {
     background-color: ghostwhite;

@@ -20,19 +20,19 @@ def real_estate_search(request):
 
     return render(request, 'real_estate_search.html')
 
-class NedvizhkaView(LoginRequiredMixin, TemplateView):
+class NedvizhkaView(TemplateView):
     template_name = 'nedvizhka.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        flat_queryset = Flat.objects.filter(creator=self.request.user)
-        house_queryset = House.objects.filter(creator=self.request.user)
-        garage_queryset = Garage.objects.filter(creator=self.request.user)
-        parking_queryset = Parking.objects.filter(creator=self.request.user)
-        warehouse_queryset = Warehouse.objects.filter(creator=self.request.user)
-        office_queryset = Office.objects.filter(creator=self.request.user)
-        trade_queryset = Trade.objects.filter(creator=self.request.user)
-        industrial_queryset = Industrial.objects.filter(creator=self.request.user)
+        flat_queryset = Flat.objects.filter(is_moderated=True)
+        house_queryset = House.objects.filter(is_moderated=True)
+        garage_queryset = Garage.objects.filter(is_moderated=True)
+        parking_queryset = Parking.objects.filter(is_moderated=True)
+        warehouse_queryset = Warehouse.objects.filter(is_moderated=True)
+        office_queryset = Office.objects.filter(is_moderated=True)
+        trade_queryset = Trade.objects.filter(is_moderated=True)
+        industrial_queryset = Industrial.objects.filter(is_moderated=True)
         context['flat_queryset'] = flat_queryset
         context['house_queryset'] = house_queryset
         context['garage_queryset'] = garage_queryset
