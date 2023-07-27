@@ -40,3 +40,30 @@ class FlatListViewTestCase(TestCase):
         self.assertContains(response, self.flat1.title)
         self.assertContains(response, self.flat2.title)
         self.assertNotContains(response, self.flat3.title)
+
+
+class FlatDetailViewTest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.client.login(username='testuser', password='testpassword')
+        # Создание тестового объекта Flat
+        self.flat = Flat.objects.create(title='Flat 1', description='Description for Flat 1', is_moderated=True,
+                                        creator=self.user, price=100000, number_of_rooms=3, floor_number=1,
+                                        total_area=70, living_area=44.0, kitchen=14.0, year_of_construction=2018)
+
+    def test_flat_detail_view(self):
+        # Получение URL для просмотра деталей квартиры
+        url = reverse("flat", args=[self.flat.pk])
+        response = self.client.get(url)
+
+        # Проверка, что запрос завершился успешно
+        self.assertEqual(response.status_code, 200)
+
+        # Проверка, что используется правильный шаблон
+        self.assertTemplateUsed(response, "flatdetailview.html")
+
+        # Проверка, что данные объекта Flat отображаются на странице
+        self.assertContains(response, self.flat.title)
+        self.assertContains(response, self.flat.description)
+        self.assertContains(response, str(self.flat.total_area))
+        self.assertContains(response, self.flat.address)
