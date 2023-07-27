@@ -6,7 +6,6 @@ from .forms import *
 from django.shortcuts import get_object_or_404
 
 
-
 class FlatListView(ListView):
     model = Flat
 
@@ -277,73 +276,115 @@ class HouseUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
 
-class GarageCreateView(LoginRequiredMixin, CreateView):
-    model = Garage
+class GarageUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = GarageForm
-    template_name = 'garagecreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Garage, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
 
 
-class ParkingCreateView(LoginRequiredMixin, CreateView):
-    model = Parking
+class ParkingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = ParkingForm
-    template_name = 'parkingcreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Parking, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
 
 
-class WarehouseCreateView(LoginRequiredMixin, CreateView):
-    model = Warehouse
+class WarehouseUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = WarehouseForm
-    template_name = 'warehousecreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Warehouse, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
 
 
-class OfficeCreateView(LoginRequiredMixin, CreateView):
-    model = Office
+class OfficeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = OfficeForm
-    template_name = 'officecreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Office, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
 
 
-class TradeCreateView(LoginRequiredMixin, CreateView):
-    model = Trade
+class TradeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = TradeForm
-    template_name = 'tradecreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Trade, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
 
 
-class IndustrialCreateView(LoginRequiredMixin, CreateView):
-    model = Industrial
+class IndustrialUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = IndustrialForm
-    template_name = 'industrialcreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Industrial, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
