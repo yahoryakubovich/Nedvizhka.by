@@ -9,6 +9,7 @@ urlpatterns = [
     path('house/', HouseListView.as_view(template_name="house.html"), name='house'),
     path('house/<int:pk>', HouseDetailView.as_view(), name='house'),
     path('house/create/', HouseCreateView.as_view(), name="create_house"),
+    path('house/<int:pk>/edit/', HouseUpdateView.as_view(), name='edit_house'),
     path('garage/', GarageListView.as_view(template_name="garage.html"), name='garage'),
     path('garage/<int:pk>', GarageDetailView.as_view(), name='garage'),
     path('garage/create/', GarageCreateView.as_view(), name="create_garage"),

@@ -3,6 +3,8 @@ from django.views.generic.edit import *
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .forms import *
+from django.shortcuts import get_object_or_404
+
 
 
 class FlatListView(ListView):
@@ -238,9 +240,11 @@ class IndustrialCreateView(LoginRequiredMixin, CreateView):
 
 
 class FlatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Flat
-    template_name = 'edit_flat.html'
-    fields = ['title', 'price']
+    template_name = 'edit.html'
+    form_class = FlatForm
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Flat, pk=self.kwargs['pk'], creator=self.request.user)
 
     def get_success_url(self):
         return reverse_lazy('profile')
@@ -249,16 +253,27 @@ class FlatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         flat = self.get_object()
         return flat.creator == self.request.user
 
+    def form_valid(self, form):
+        form.instance.is_moderated = False
+        return super().form_valid(form)
 
-class HouseCreateView(LoginRequiredMixin, CreateView):
-    model = House
+
+class HouseUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'edit.html'
     form_class = HouseForm
-    template_name = 'housecreateview.html'
-    login_url = 'account_login'
-    success_url = reverse_lazy('profile')
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(House, pk=self.kwargs['pk'], creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def test_func(self):
+        flat = self.get_object()
+        return flat.creator == self.request.user
 
     def form_valid(self, form):
-        form.instance.creator = self.request.user
+        form.instance.is_moderated = False
         return super().form_valid(form)
 
 
