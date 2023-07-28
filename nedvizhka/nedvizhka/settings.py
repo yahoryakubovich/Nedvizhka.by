@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.odnoklassniki',
+    'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
