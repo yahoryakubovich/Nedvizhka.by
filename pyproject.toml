@@ -12,6 +12,7 @@ pillow = "^10.0.0"
 django-allauth = "^0.54.0"
 python-social-auth = {extras = ["yandex"], version = "^0.3.6"}
 djangorestframework = "^3.14.0"
+djangorestframework-simplejwt = "^5.2.2"
 
 
 [build-system]
