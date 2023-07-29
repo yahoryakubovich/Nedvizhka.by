@@ -37,7 +37,7 @@
                         <div class="ad">
                             {% if flat.image %}<img style="max-height: 128px" src="{{ flat.image.url }}"> {% endif %}
                             <a href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}"><h4>{{ flat.title }}</h4></a>
-                            <p>{{ flat.description|slice:'64'}}..</p>
+                            <p>{{ flat.description|slice:'64' }}..</p>
                         </div>
                     {% endfor %}
                 {% endif %}
@@ -51,8 +51,12 @@
                     пространства, частную территорию и возможность создать свой уютный уголок вдали от городской
                     суеты.</p>
                 {% if house_queryset %}
-                    {% for house in house_queryset %}
-                        <p>{{ house.title }}</p>
+                    {% for house in house_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if house.image %}<img style="max-height: 128px" src="{{ house.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/house/{{ house.id }}"><h4>{{ house.title }}</h4></a>
+                            <p>{{ house.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
@@ -64,8 +68,13 @@
                     отдельные
                     гаражи, гаражные кооперативы и парковки.</p>
                 {% if garage_queryset %}
-                    {% for garage in garage_queryset %}
-                        <p>{{ garage.title }}</p>
+                    {% for garage in garage_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if garage.image %}
+                                <img style="max-height: 128px" src="{{ garage.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}"><h4>{{ garage.title }}</h4></a>
+                            <p>{{ garage.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
@@ -76,8 +85,14 @@
                     других местах. Стоянки предоставляют удобное место для временного или постоянного хранения
                     автомобилей, обеспечивая безопасность и доступность.</p>
                 {% if parking_queryset %}
-                    {% for parking in parking_queryset %}
-                        <p>{{ parking.title }}</p>
+                    {% for parking in parking_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if parking.image %}
+                                <img style="max-height: 128px" src="{{ parking.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}"><h4>{{ parking.title }}</h4>
+                            </a>
+                            <p>{{ parking.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
@@ -90,8 +105,13 @@
                     комфортные
                     условия для бизнеса и организаций.</p>
                 {% if office_queryset %}
-                    {% for office in office_queryset %}
-                        <p>{{ office.title }}</p>
+                    {% for office in office_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if office.image %}
+                                <img style="max-height: 128px" src="{{ office.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/office/{{ office.id }}"><h4>{{ office.title }}</h4></a>
+                            <p>{{ office.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
@@ -105,8 +125,14 @@
                     и
                     предлагают просторное пространство и удобства для логистики и бизнеса.</p>
                 {% if warehouse_queryset %}
-                    {% for warehouse in warehouse_queryset %}
-                        <p>{{ warehouse.title }}</p>
+                    {% for warehouse in warehouse_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if warehouse.image %}
+                                <img style="max-height: 128px" src="{{ warehouse.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}">
+                                <h4>{{ warehouse.title }}</h4></a>
+                            <p>{{ warehouse.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
@@ -116,8 +142,12 @@
                     павильонов. Здесь вы можете найти предложения о торговых помещениях в торговых центрах.
                 </p>
                 {% if trade_queryset %}
-                    {% for trade in trade_queryset %}
-                        <p>{{ trade.title }}</p>
+                    {% for trade in trade_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if trade.image %}<img style="max-height: 128px" src="{{ trade.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}"><h4>{{ trade.title }}</h4></a>
+                            <p>{{ trade.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
@@ -128,8 +158,14 @@
                     складских помещениях, производственных цехах, мастерских и других помещениях, предназначенных для
                     осуществления технической деятельности.</p>
                 {% if industrial_queryset %}
-                    {% for industrial in industrial_queryset %}
-                        <p>{{ industrial.title }}</p>
+                    {% for industrial in industrial_queryset|slice:":5" %}
+                        <div class="ad">
+                            {% if  industrial.image %}
+                                <img style="max-height: 128px" src="{{ industrial.image.url }}"> {% endif %}
+                            <a href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}">
+                                <h4>{{ industrial.title }}</h4></a>
+                            <p>{{ industrial.description|slice:'64' }}..</p>
+                        </div>
                     {% endfor %}
                 {% endif %}
             </li>
