@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Недвижка.бай: подтвердить удаление {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="product-info">
+            <h2>Вы уверены, что хотите удалить объект Trade "{{ object.title }}"?</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" value="Удалить">
+                <a href="{% url 'profile' %}">Отмена</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

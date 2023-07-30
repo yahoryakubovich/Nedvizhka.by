@@ -388,3 +388,83 @@ class IndustrialUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.is_moderated = False
         return super().form_valid(form)
+
+
+class FlatDeleteView(LoginRequiredMixin, DeleteView):
+    model = Flat
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class HouseDeleteView(LoginRequiredMixin, DeleteView):
+    model = House
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class GarageDeleteView(LoginRequiredMixin, DeleteView):
+    model = Garage
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class ParkingDeleteView(LoginRequiredMixin, DeleteView):
+    model = Parking
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class WarehouseDeleteView(LoginRequiredMixin, DeleteView):
+    model = Warehouse
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class OfficeDeleteView(LoginRequiredMixin, DeleteView):
+    model = Office
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class TradeDeleteView(LoginRequiredMixin, DeleteView):
+    model = Trade
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
+
+
+class IndustrialDeleteView(LoginRequiredMixin, DeleteView):
+    model = Industrial
+    template_name = 'delete.html'
+    success_url = reverse_lazy('profile')
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(creator=self.request.user)
