@@ -241,12 +241,10 @@ class IndustrialCreateView(LoginRequiredMixin, CreateView):
 class FlatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'edit.html'
     form_class = FlatForm
+    success_url = reverse_lazy('profile')
 
     def get_object(self, queryset=None):
         return get_object_or_404(Flat, pk=self.kwargs['pk'], creator=self.request.user)
-
-    def get_success_url(self):
-        return reverse_lazy('profile')
 
     def test_func(self):
         flat = self.get_object()
