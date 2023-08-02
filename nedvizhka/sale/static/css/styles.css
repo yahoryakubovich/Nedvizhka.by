@@ -2,70 +2,98 @@ body {
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    background-color: ghostwhite;
+    background-color: white;
 }
 
 header {
-    background-color: black;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-buttons {
-    display: flex;
-    margin-left: auto;
-}
-
-header a {
-    display: inline-block;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 5px;
-    font-size: 12px;
-    margin-right: 10px;
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-    transition: .5s;
-}
-
-header a:hover {
-    background-position: right center;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }
 
 nav {
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 20px;
+    background-color: white;
     margin: 0;
+    padding: 0;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
+    text-decoration: none;
+    list-style: none;
     padding: 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; /* Размещение элементов в ширину с равным промежутком между ними */
 }
 
 nav li {
-    display: inline;
-    margin-right: 10px;
+    margin-left: 5px; /* Небольшой отступ между элементами списка */
 }
 
 nav a {
+    color: black;
     text-decoration: none;
-    color: white;
+    font-size: 16px;
 }
 
-nav a:hover {
-    color: #9EEFE1;
+/* Стилизация кнопок */
+.button-link {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
 }
+
+.button-link:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .button-link {
+        display: none;
+    }
+}
+
+/* Стили для выпадающего меню */
+.menu li.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Дополнительные стили для кнопки "Продажа" */
+.menu li.dropdown a {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu li.dropdown:hover a {
+    background-color: #f1f1f1;
+}
+
 
 footer {
     display: flex;
@@ -111,23 +139,19 @@ footer {
 }
 
 .container {
-    margin-left: 100px;
-    margin-right: 100px;
-    position: relative;
-    display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-    background-color: ghostwhite;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .ad {
-  width: 300px;
-  padding: 10px;
-  margin: 10px;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .about-us .ad {
-  display: inline-block;
+    display: inline-block;
 }
 
 .navigation {
@@ -154,52 +178,6 @@ footer {
     text-decoration: none;
     color: black;
     margin-right: 10px;
-}
-
-.search {
-    justify-content: center;
-    padding: 10px;
-}
-
-
-.search button {
-    outline: none;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    padding: 10px 20px;
-    text-decoration: none;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 5px;
-    font-size: 12px;
-    margin: auto 0 0 0;
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-    transition: .5s;
-    bottom: 20px;
-    right: 20px;
-}
-
-.search button,
-button:active,
-button:focus {
-    border: none;
-}
-
-.search button:hover {
-    background-position: right center;
-}
-
-.search label {
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-.search input {
-    width: 600px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .about-us {

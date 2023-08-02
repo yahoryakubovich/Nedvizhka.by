@@ -1,77 +1,111 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} Title {% endblock %} </title>
-    <link rel="stylesheet" href="{% static "/css/styles.css" %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-<header>
-    <div class="header-buttons">
-        <a href="{% url 'create' %}" class="add-listing-button">+ Добавить объявление</a>
-        <a href="{% url 'account_login' %}" class="login-button">Вход</a>
+<nav class="navbar navbar-expand-lg bg-white border border-light sticky-top">
+    <div class="container-md">
+        <a class="navbar-brand" href="#">Недвижка.бай</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url "nedvizhka" %}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "about" %}">О нас</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Продажа
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url "flat" %}">Квартиры</a></li>
+                        <li><a class="dropdown-item" href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url "garage" %}">Гаражи</a></li>
+                        <li><a class="dropdown-item" href="{% url "parking" %}">Стоянки</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Коммерческая
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url "office" %}">Офисы</a></li>
+                        <li><a class="dropdown-item" href="{% url "warehouse" %}">Склады</a></li>
+                        <li><a class="dropdown-item" href="{% url "trade" %}">Торговые павильоны</a></li>
+                        <li><a class="dropdown-item" href="{% url "industrial" %}">Технические помещения</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="d-flex gap-3">
+                <div class="d-grid gap-2 d-md-block">
+                    <a class="btn btn-primary" href="{% url "create" %}" role="button">+ Добавить объявление</a>
+                    <a class="btn btn-primary" href="{% url "account_login" %}" role="button">Регистрация</a>
+                </div>
+            </div>
+        </div>
     </div>
-</header>
-<nav>
-    <ul>
-        <li><a href="{% url "nedvizhka" %}">Главная</a></li>
-        <li><a href="{% url "flat" %}">Продажа</a></li>
-        <li><a href="{% url "about" %}">О нас</a></li>
-        <li><a href="{% url "profile" %}">Профиль</a></li>
-    </ul>
 </nav>
-<div class="option">
-    <a href="{% url "flat" %}">Квартиры</a>
-    <a href="{% url "house" %}">Дома, коттеджи, усадьбы</a>
-    <a href="{% url "garage" %}">Гаражи</a>
-    <a href="{% url "parking" %}">Стоянки</a>
-    <a href="{% url "office" %}">Офисы</a>
-    <a href="{% url "warehouse" %}">Склады</a>
-    <a href="{% url "trade" %}">Торговые павильоны</a>
-    <a href="{% url "industrial" %}">Промышленные помещения</a>
-</div>
 {% block content %}
 {% endblock %}
-<footer class="footer">
-    <div class="column">
-        <h4>Реклама на сайте</h4>
-        <p>Размещение рекламы:</p>
-        <p>+375 (12) 345-67-89</p>
-        <p>+375 (12) 345-67-89</p>
-        <p>+375 (12) 345-67-89</p>
-        <p>+375 (12) 345-67-89</p>
+<div class="d-flex vh-100 bg-light">
+    <div class="container-md">
+        <div class="row">
+            <div class="col">
+                <h4>Реклама на сайте</h4>
+                <p>Размещение рекламы:</p>
+                <p>+375 (12) 345-67-89</p>
+                <p>+375 (12) 345-67-89</p>
+                <p>+375 (12) 345-67-89</p>
+                <p>+375 (12) 345-67-89</p>
+            </div>
+            <div class="col">
+                <h4>Справочный центр</h4>
+                <ul>
+                    <li><a href="#">Как подать объявление</a></li>
+                    <li><a href="#">Как стать частью Nedvizhka.by</a></li>
+                    <li><a href="#">Партнёрство</a></li>
+                    <li><a href="#">Поддержка</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Коммерческая</h4>
+                <ul>
+                    <li><a href="{% url "office" %}">Офисы</a></li>
+                    <li><a href="{% url "warehouse" %}">Склады</a></li>
+                    <li><a href="{% url "trade" %}">Торговые павильоны</a></li>
+                    <li><a href="{% url "industrial" %}">Промышленные помещения</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Недвижимость</h4>
+                <ul>
+                    <li><a href="{% url "flat" %}">Квартиры</a></li>
+                    <li><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
+                    <li><a href="{% url "garage" %}">Гаражи</a></li>
+                    <li><a href="{% url "parking" %}">Стоянки</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="column">
-        <h4>Справочный центр</h4>
-        <ul>
-            <li><a href="#">Как подать объявление</a></li>
-            <li><a href="#">Как стать частью Nedvizhka.by</a></li>
-            <li><a href="#">Партнёрство</a></li>
-            <li><a href="#">Поддержка</a></li>
-        </ul>
-    </div>
-    <div class="column">
-        <h4>Коммерческая</h4>
-        <ul>
-            <li><a href="{% url "office" %}">Офисы</a></li>
-            <li><a href="{% url "warehouse" %}">Склады</a></li>
-            <li><a href="{% url "trade" %}">Торговые павильоны</a></li>
-            <li><a href="{% url "industrial" %}">Промышленные помещения</a></li>
-        </ul>
-    </div>
-    <div class="column">
-        <h4>Недвижимость</h4>
-        <ul>
-            <li><a href="{% url "flat" %}">Квартиры</a></li>
-            <li><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
-            <li><a href="{% url "garage" %}">Гаражи</a></li>
-            <li><a href="{% url "parking" %}">Стоянки</a></li>
-        </ul>
-    </div>
-</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 </html>
