@@ -1,64 +1,65 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: {{ flat.title }}{% endblock %}
-
 {% block content %}
-    <div class="container">
-        <div class="address-title">
-            <p>г. Минск {{ flat.address }}</p>
-            <h2>{{ flat.title }}</h2>
-            <div id="carouselExample" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        {% if flat.image %}
-                        <img src="{{ flat.image.url }}" class="d-block w-100" alt="...">
-                        {% endif %}
-                    </div>
-                    <div class="carousel-item">
-                        {% if flat.image %}
-                        <img src="{{ flat.image.url }}" class="d-block w-100" alt="...">
-                        {% endif %}
-                    </div>
-                    <div class="carousel-item">
-                        {% if flat.image %}
-                        <img src="{{ flat.image.url }}" class="d-block w-100" alt="...">
-                        {% endif %}
+    <div class="container-md mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="address-title">
+                    <p>г. Минск {{ flat.address }}</p>
+                    <h2>{{ flat.title }}</h2>
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                {% if flat.image %}
+                                    <img src="{{ flat.image.url }}" class="d-block w-100" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="carousel-item">
+                                {% if flat.image %}
+                                    <img src="{{ flat.image.url }}" class="d-block w-100" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="carousel-item">
+                                {% if flat.image %}
+                                    <img src="{{ flat.image.url }}" class="d-block w-100" alt="...">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+
+                <div><h2>Описание: </h2>
+                    {{ flat.description }}
+                </div>
+                <div class="parameters">
+                    <h2>Параметры объекта</h2>
+                    <p>Количество комнат: {{ flat.number_of_rooms }}</p>
+                    <p>Общая площадь: {{ flat.total_area }} м²</p>
+                    <p>Жилая площадь: {{ flat.living_area }} м²</p>
+                    <p>Площадь кухни: {{ flat.kitchen }} м²</p>
+                    <p>Год постройки: {{ flat.year_of_construction }}</p>
+                    <p>Этаж: {{ flat.floor_number }}</p>
+                    <p>Состояние: {{ flat.get_condition_display }}</p>
+                    <p>Ремонт: {{ flat.get_renovation_display }}</p>
+                    {% if flat.facilities %}
+                        <p>{{ flat.facilities }}</p>
+                    {% endif %}
+                    <h2>Контакты: </h2>
+                    <p>Имя: {{ flat.creator.profile.first_name }}</p>
+                    <p>Номер телефона: {{ flat.creator.profile.phone_number }}</p>
+                </div>
             </div>
         </div>
-
-        <div><h2>Описание: </h2>
-            {{ flat.description }}
-        </div>
-        <div class="parameters">
-            <h2>Параметры объекта</h2>
-            <p>Количество комнат: {{ flat.number_of_rooms }}</p>
-            <p>Общая площадь: {{ flat.total_area }} м²</p>
-            <p>Жилая площадь: {{ flat.living_area }} м²</p>
-            <p>Площадь кухни: {{ flat.kitchen }} м²</p>
-            <p>Год постройки: {{ flat.year_of_construction }}</p>
-            <p>Этаж: {{ flat.floor_number }}</p>
-            <p>Состояние: {{ flat.get_condition_display }}</p>
-            <p>Ремонт: {{ flat.get_renovation_display }}</p>
-            {% if flat.facilities %}
-                <p>{{ flat.facilities }}</p>
-            {% endif %}
-            <h2>Контакты: </h2>
-            <p>Имя: {{ flat.creator.profile.first_name }}</p>
-            <p>Номер телефона: {{ flat.creator.profile.phone_number }}</p>
-        </div>
-    </div>
-    </div>
     </div>
 {% endblock %}
 
