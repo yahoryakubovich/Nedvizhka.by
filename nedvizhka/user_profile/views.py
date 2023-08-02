@@ -7,7 +7,8 @@ from django.contrib.auth.models import User
 from .models import Profile
 from django.views.generic import ListView
 from sale.models import *
-
+from .models import Profile
+from .forms import ProfileForm
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
@@ -44,7 +45,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 class EditProfileView(LoginRequiredMixin, UpdateView):
     model = Profile
     template_name = 'edit_profile.html'
-    fields = ['first_name', 'last_name', 'phone_number']
+    form_class = ProfileForm
     success_url = reverse_lazy('profile')
 
     def get_object(self, queryset=None):

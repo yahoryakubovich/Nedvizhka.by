@@ -1,104 +1,114 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: профиль {% endblock %}
 {% block content %}
-<div class="container-md mt-3 mb-3">
-    <h2>Добро пожаловать в Ваш личный кабинет, <b>{{ profile.first_name }}</b>!</h2>
-    <div class="container-md mt-3 mb-3">
-        <p>Имя: {{ profile.first_name }}</p>
-        <p>Фамилия: {{ profile.last_name }}</p>
-        {% if profile.user.email %}
-            <p>Электронная почта: {{ profile.user.email }}</p>
-        {% endif %}
-        {% if profile.phone_number %}
-            <p>Номер телефона: {{ profile.phone_number }}</p>
-        {% endif %}
-        <p>Дата регистрации: {{ profile.user.date_joined }}</p>
-        <a class="btn btn-primary" href="{% url "edit_profile" %}" role="button">Изменить</a>
-        <a class="btn btn-primary" href="{% url "account_logout" %}" role="button">Выйти</a>
+    <div class="container-md mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Профиль</li>
+            </ol>
+        </nav>
     </div>
-    <h2>Список моих объявлений:</h2>
-
-    {% if flat_queryset %}
+    <div class="container-md mt-3 mb-3">
+        <h2>Добро пожаловать в Ваш личный кабинет, <b>{{ profile.first_name }}</b>!</h2>
         <div class="container-md mt-3 mb-3">
-        <h3>Квартиры:</h3>
-        <div class="row">
-            {% for flat in flat_queryset %}
-                <div class="col-md-3">
-                    <div class="card" style="width: 18rem;">
-                        {% if flat.image %}
-                            <img src="{{ flat.image.url }}" class="card-img-top" alt="...">
-                        {% endif %}
-                        <div class="card-body">
-                            <a href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}">
-                                <h4>{{ flat.title }}</h4>
-                            </a>
-                            <p class="card-text">{{ flat.description|slice:":250" }}...</p>
-                            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}/edit">Изменить</a>
-                            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}/delete">Удалить</a>
+            <p>Имя: {{ profile.first_name }}</p>
+            <p>Фамилия: {{ profile.last_name }}</p>
+            {% if profile.user.email %}
+                <p>Электронная почта: {{ profile.user.email }}</p>
+            {% endif %}
+            {% if profile.phone_number %}
+                <p>Номер телефона: {{ profile.phone_number }}</p>
+            {% endif %}
+            <p>Дата регистрации: {{ profile.user.date_joined }}</p>
+            <a class="btn btn-primary" href="{% url "edit_profile" %}" role="button">Изменить</a>
+            <a class="btn btn-primary" href="{% url "account_logout" %}" role="button">Выйти</a>
+        </div>
+        <h2>Список моих объявлений:</h2>
+
+        {% if flat_queryset %}
+            <div class="container-md mt-3 mb-3">
+            <h3>Квартиры:</h3>
+            <div class="row">
+                {% for flat in flat_queryset %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if flat.image %}
+                                <img src="{{ flat.image.url }}" class="card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body">
+                                <a href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}">
+                                    <h4>{{ flat.title }}</h4>
+                                </a>
+                                <p class="card-text">{{ flat.description|slice:":250" }}...</p>
+                                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}/edit">Изменить</a>
+                                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}/delete">Удалить</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
         </div>
-    {% endif %}
+        {% if house_queryset %}
+            <h3>Дома, коттеджи, усадьбы:</h3>
+            {% for house in house_queryset %}
+                <a href="http://127.0.0.1:8000/sale/house/{{ house.id }} "><p>{{ house.title }}</p></a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/house/{{ house.id }}/edit">Изменить</a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/house/{{ house.id }}/delete">Удалить</a>
+            {% endfor %}
+        {% endif %}
+        {% if garage_queryset %}
+            <h3>Гаражи:</h3>
+            {% for garage in garage_queryset %}
+                <a href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}"><p>{{ garage.title }}</p></a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}/edit">Изменить</a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}/delete">Удалить</a>
+            {% endfor %}
+        {% endif %}
+        {% if parking_queryset %}
+            <h3>Стоянки:</h3>
+            {% for parking in parking_queryset %}
+                <a href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}"><p>{{ parking.title }}</p></a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}/edit">Изменить</a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}/delete">Удалить</a>
+            {% endfor %}
+        {% endif %}
+        {% if warehouse_queryset %}
+            <h3>Склады:</h3>
+            {% for warehouse in warehouse_queryset %}
+                <a href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}"><p>{{ warehouse.title }}</p></a>
+                <a class="btn btn-primary"
+                   href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}/edit">Изменить</a>
+                <a class="btn btn-primary"
+                   href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}/delete">Удалить</a>
+            {% endfor %}
+        {% endif %}
+        {% if office_queryset %}
+            <h3>Офисы:</h3>
+            {% for office in office_queryset %}
+                <a href="http://127.0.0.1:8000/sale/office/{{ office.id }}"><p>{{ office.title }}</p></a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/office/{{ office.id }}/edit">Изменить</a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/office/{{ office.id }}/delete">Удалить</a>
+            {% endfor %}
+        {% endif %}
+        {% if trade_queryset %}
+            <h3>Торговые павильоны:</h3>
+            {% for trade in trade_queryset %}
+                <a href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}"><p>{{ trade.title }}</p></a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}/edit">Изменить</a>
+                <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}/delete">Удалить</a>
+            {% endfor %}
+        {% endif %}
+        {% if industrial_queryset %}
+            <h3>Промышленные помещения:</h3>
+            {% for industrial in industrial_queryset %}
+                <a href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}"><p>{{ industrial.title }}</p></a>
+                <a class="btn btn-primary"
+                   href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}/edit">Изменить</a>
+                <a class="btn btn-primary"
+                   href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}/delete">Удалить</a>}
+            {% endfor %}
+        {% endif %}
     </div>
-    {% if house_queryset %}
-        <h3>Дома, коттеджи, усадьбы:</h3>
-        {% for house in house_queryset %}
-            <a href="http://127.0.0.1:8000/sale/house/{{ house.id }} "><p>{{ house.title }}</p></a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/house/{{ house.id }}/edit">Изменить</a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/house/{{ house.id }}/delete">Удалить</a>
-        {% endfor %}
-    {% endif %}
-    {% if garage_queryset %}
-        <h3>Гаражи:</h3>
-        {% for garage in garage_queryset %}
-            <a href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}"><p>{{ garage.title }}</p></a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}/edit">Изменить</a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}/delete">Удалить</a>
-        {% endfor %}
-    {% endif %}
-    {% if parking_queryset %}
-        <h3>Стоянки:</h3>
-        {% for parking in parking_queryset %}
-            <a href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}"><p>{{ parking.title }}</p></a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}/edit">Изменить</a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}/delete">Удалить</a>
-        {% endfor %}
-    {% endif %}
-    {% if warehouse_queryset %}
-        <h3>Склады:</h3>
-        {% for warehouse in warehouse_queryset %}
-            <a href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}"><p>{{ warehouse.title }}</p></a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}/edit">Изменить</a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}/delete">Удалить</a>
-        {% endfor %}
-    {% endif %}
-    {% if office_queryset %}
-        <h3>Офисы:</h3>
-        {% for office in office_queryset %}
-            <a href="http://127.0.0.1:8000/sale/office/{{ office.id }}"><p>{{ office.title }}</p></a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/office/{{ office.id }}/edit">Изменить</a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/office/{{ office.id }}/delete">Удалить</a>
-        {% endfor %}
-    {% endif %}
-    {% if trade_queryset %}
-        <h3>Торговые павильоны:</h3>
-        {% for trade in trade_queryset %}
-            <a href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}"><p>{{ trade.title }}</p></a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}/edit">Изменить</a>
-            <a class="btn btn-primary" href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}/delete">Удалить</a>
-        {% endfor %}
-    {% endif %}
-    {% if industrial_queryset %}
-        <h3>Промышленные помещения:</h3>
-        {% for industrial in industrial_queryset %}
-            <a href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}"><p>{{ industrial.title }}</p></a>
-            <a class="btn btn-primary"
-               href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}/edit">Изменить</a>
-            <a class="btn btn-primary"
-               href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}/delete">Удалить</a>}
-        {% endfor %}
-    {% endif %}
-</div>
 {% endblock %}

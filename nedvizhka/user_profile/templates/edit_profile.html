@@ -1,13 +1,35 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: редактирование профиля {% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="product-info">
-            <h2>Редактирование профиля</h2>
-            <form method="post">{% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Изменить</button>
-            </form>
-        </div>
+    <div class="container-md mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url "account_login" %}">Профиль</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Редактирование профиля</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container-md mt-3 mb-3">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">Имя:</label>
+                <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}"
+                       name="{{ form.first_name.html_name }}" value="{{ form.first_name.value }}">
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.last_name.id_for_label }}" class="form-label">Фамилия:</label>
+                <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}"
+                       name="{{ form.last_name.html_name }}" value="{{ form.last_name.value }}">
+            </div>
+            <div class="mb-3">
+                <label for="{{ form.phone_number.id_for_label }}" class="form-label">Номер телефона:</label>
+                <input type="text" class="form-control" id="{{ form.phone_number.id_for_label }}"
+                       name="{{ form.phone_number.html_name }}" value="{{ form.phone_number.value }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        </form>
     </div>
 {% endblock %}
