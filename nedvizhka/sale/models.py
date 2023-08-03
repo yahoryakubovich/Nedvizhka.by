@@ -38,15 +38,19 @@ CATEGORY = [
 
 
 class Realty(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.CharField(max_length=5000)
-    total_area = models.FloatField()
+    title = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
+    description = models.CharField(max_length=4000)
+    total_area = models.FloatField()
     facilities = models.CharField(max_length=2000, blank=True)
     condition = models.CharField(choices=CONDITION, max_length=20)
     renovation = models.CharField(choices=RENOVATION, max_length=20)
     price = models.PositiveIntegerField()
     image = models.ImageField(null=True, blank=True, upload_to="images")
+    image2 = models.ImageField(null=True, blank=True, upload_to="images")
+    image3 = models.ImageField(null=True, blank=True, upload_to="images")
+    image4 = models.ImageField(null=True, blank=True, upload_to="images")
+    image5 = models.ImageField(null=True, blank=True, upload_to="images")
     creator = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     is_moderated = models.BooleanField(default=False)
 

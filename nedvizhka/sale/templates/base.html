@@ -54,8 +54,8 @@
             </ul>
             <div class="d-flex gap-3">
                 <div class="d-grid gap-2 d-md-block">
-                    <a class="btn btn-primary" href="{% url "create" %}" role="button">+ Добавить объявление</a>
-                    <a class="btn btn-primary" href="{% url "account_login" %}" role="button">Регистрация</a>
+                    <a class="btn btn-success" href="{% url "create" %}" role="button">+ Добавить объявление</a>
+                    <a class="btn btn-success" href="{% url "account_login" %}" role="button">Регистрация</a>
                 </div>
             </div>
         </div>
@@ -63,43 +63,42 @@
 </nav>
 {% block content %}
 {% endblock %}
-<div class="d-flex vh-100 bg-light">
+<style>
+    .no-decoration a {
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<div class="d-flex bg-light">
     <div class="container-md">
         <div class="row">
-            <div class="col">
+            <div class="col flex-grow-1">
                 <h4>Реклама на сайте</h4>
-                <p>Размещение рекламы:</p>
                 <p>+375 (12) 345-67-89</p>
                 <p>+375 (12) 345-67-89</p>
                 <p>+375 (12) 345-67-89</p>
                 <p>+375 (12) 345-67-89</p>
             </div>
-            <div class="col">
+            <div class="col flex-grow-1">
                 <h4>Справочный центр</h4>
-                <ul>
-                    <li><a href="#">Как подать объявление</a></li>
-                    <li><a href="#">Как стать частью Nedvizhka.by</a></li>
-                    <li><a href="#">Партнёрство</a></li>
-                    <li><a href="#">Поддержка</a></li>
-                </ul>
+                 <p class="no-decoration"><a href="#">Как подать объявление</a></p>
+                 <p class="no-decoration"><a href="#">Как стать частью Nedvizhka.by</a></p>
+                 <p class="no-decoration"><a href="#">Партнёрство</a></p>
+                 <p class="no-decoration"><a href="#">Поддержка</a></p>
             </div>
-            <div class="col">
-                <h4>Коммерческая</h4>
-                <ul>
-                    <li><a href="{% url "office" %}">Офисы</a></li>
-                    <li><a href="{% url "warehouse" %}">Склады</a></li>
-                    <li><a href="{% url "trade" %}">Торговые павильоны</a></li>
-                    <li><a href="{% url "industrial" %}">Промышленные помещения</a></li>
-                </ul>
-            </div>
-            <div class="col">
+            <div class="col flex-grow-1">
                 <h4>Недвижимость</h4>
-                <ul>
-                    <li><a href="{% url "flat" %}">Квартиры</a></li>
-                    <li><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
-                    <li><a href="{% url "garage" %}">Гаражи</a></li>
-                    <li><a href="{% url "parking" %}">Стоянки</a></li>
-                </ul>
+                <p class="no-decoration"><a href="{% url "flat" %}">Квартиры</a></p>
+                <p class="no-decoration"><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></p>
+                <p class="no-decoration"><a href="{% url "garage" %}">Гаражи</a></p>
+                <p class="no-decoration"><a href="{% url "parking" %}">Стоянки</a></p>
+            </div>
+            <div class="col flex-grow-1">
+                <h4>Коммерческая</h4>
+                <p class="no-decoration"><a href="{% url "office" %}">Офисы</a></p>
+                <p class="no-decoration"><a href="{% url "warehouse" %}">Склады</a></p>
+                <p class="no-decoration"><a href="{% url "trade" %}">Торговые павильоны</a></p>
+                <p class="no-decoration"><a href="{% url "industrial" %}">Промышленные помещения</a></p>
             </div>
         </div>
     </div>
