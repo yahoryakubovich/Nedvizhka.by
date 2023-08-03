@@ -17,7 +17,8 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ flat.title }}</h5>
                     <p class="card-text">{{ flat.address }}</p>
-                    <p class="card-text">${{ flat.price }}</p>
+                    <p class="card-text"><strong>{{ flat.number_of_rooms }} комн. {{ flat.total_area }} м² {{ flat.floor_number }} этаж</strong></p>
+                    <p class="card-text"><strong>$ {{ flat.price }}</strong></p>
                     <p class="card-text">{{ flat.description|slice:":250" }}...</p>
                     <a href="{{ flat.id }}" class="btn btn-success mt-auto">Показать контакты</a>
                 </div>

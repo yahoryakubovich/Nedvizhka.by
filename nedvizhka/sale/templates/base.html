@@ -31,6 +31,13 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url "flat" %}">Квартиры</a></li>
+                        <li><a class="dropdown-item" href="{% url "flat_one_room" %}">1-комнатные</a></li>
+                        <li><a class="dropdown-item" href="{% url "flat_two_room" %}">2-комнатные</a></li>
+                        <li><a class="dropdown-item" href="{% url "flat_three_room" %}">3-комнатные</a></li>
+                        <li><a class="dropdown-item" href="{% url "flat_four_room" %}">4-комнатные</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
                         <li>
                             <hr class="dropdown-divider">
@@ -55,7 +62,7 @@
             <div class="d-flex gap-3">
                 <div class="d-grid gap-2 d-md-block">
                     <a class="btn btn-success" href="{% url "create" %}" role="button">+ Добавить объявление</a>
-                    <a class="btn btn-success" href="{% url "account_login" %}" role="button">Регистрация</a>
+                    <a class="btn btn-success" href="{% url "account_login" %}" role="button">Вход</a>
                 </div>
             </div>
         </div>
@@ -63,46 +70,42 @@
 </nav>
 {% block content %}
 {% endblock %}
-<style>
-    .no-decoration a {
-        text-decoration: none;
-        color: black;
-    }
-</style>
-<div class="d-flex bg-light">
+<nav class="navbar navbar-expand-lg bg-white border border-light">
     <div class="container-md">
-        <div class="row">
-            <div class="col flex-grow-1">
-                <h4>Реклама на сайте</h4>
-                <p>+375 (12) 345-67-89</p>
-                <p>+375 (12) 345-67-89</p>
-                <p>+375 (12) 345-67-89</p>
-                <p>+375 (12) 345-67-89</p>
-            </div>
-            <div class="col flex-grow-1">
-                <h4>Справочный центр</h4>
-                 <p class="no-decoration"><a href="#">Как подать объявление</a></p>
-                 <p class="no-decoration"><a href="#">Как стать частью Nedvizhka.by</a></p>
-                 <p class="no-decoration"><a href="#">Партнёрство</a></p>
-                 <p class="no-decoration"><a href="#">Поддержка</a></p>
-            </div>
-            <div class="col flex-grow-1">
-                <h4>Недвижимость</h4>
-                <p class="no-decoration"><a href="{% url "flat" %}">Квартиры</a></p>
-                <p class="no-decoration"><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></p>
-                <p class="no-decoration"><a href="{% url "garage" %}">Гаражи</a></p>
-                <p class="no-decoration"><a href="{% url "parking" %}">Стоянки</a></p>
-            </div>
-            <div class="col flex-grow-1">
-                <h4>Коммерческая</h4>
-                <p class="no-decoration"><a href="{% url "office" %}">Офисы</a></p>
-                <p class="no-decoration"><a href="{% url "warehouse" %}">Склады</a></p>
-                <p class="no-decoration"><a href="{% url "trade" %}">Торговые павильоны</a></p>
-                <p class="no-decoration"><a href="{% url "industrial" %}">Промышленные помещения</a></p>
-            </div>
+        <a class="navbar-brand" href="#">Недвижка.бай</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">О проекте</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Реклама</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Политика конфиденциальности</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Словарь терминов</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Правила для физлиц</a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>
+<nav class="navbar navbar-expand-lg bg-white border border-light">
+    <div class="container-md">
+        <a class="nav-link" href="#">© 2015 - 2023, Nedvizhka.by. Копирование материалов допускается только при наличии активной ссылки.</a>
+    </div>
+</nav>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>

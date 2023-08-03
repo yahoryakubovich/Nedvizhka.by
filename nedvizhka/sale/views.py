@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .forms import *
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 
 class FlatListView(ListView):
@@ -11,6 +12,31 @@ class FlatListView(ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(is_moderated=True)
+
+
+class FlatOneRoomListView(ListView):
+    model = Flat
+
+    def get_queryset(self):
+        return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=1))
+
+class FlatTwoRoomListView(ListView):
+    model = Flat
+
+    def get_queryset(self):
+        return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=2))
+
+class FlatThreeRoomListView(ListView):
+    model = Flat
+
+    def get_queryset(self):
+        return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=3))
+
+class FlatFourRoomListView(ListView):
+    model = Flat
+
+    def get_queryset(self):
+        return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=4))
 
 
 class HouseListView(ListView):

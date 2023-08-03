@@ -3,6 +3,10 @@ from .views import *
 
 urlpatterns = [
     path('flat/', FlatListView.as_view(template_name="flat.html"), name='flat'),
+    path('flat/1-rooms-flats', FlatOneRoomListView.as_view(template_name="flat.html"), name='flat_one_room'),
+    path('flat/2-rooms-flats', FlatTwoRoomListView.as_view(template_name="flat.html"), name='flat_two_room'),
+    path('flat/3-rooms-flats', FlatThreeRoomListView.as_view(template_name="flat.html"), name='flat_three_room'),
+    path('flat/4-rooms-flats', FlatFourRoomListView.as_view(template_name="flat.html"), name='flat_four_room'),
     path('flat/<int:pk>/', FlatDetailView.as_view(), name='flat'),
     path('flat/create/', FlatCreateView.as_view(), name="create_flat"),
     path('flat/<int:pk>/edit/', FlatUpdateView.as_view(), name='edit_flat'),
