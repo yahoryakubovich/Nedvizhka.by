@@ -1,28 +1,105 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: {{ house.title }} {% endblock %}
-
 {% block content %}
-    <div class="container">
-        <div class="address-title">
-            <p>г. Минск {{ house.address }}</p>
-            <h2>{{ house.title }}</h2>
-            <div class="product-photo">
-                {% if house.image %}
-                    <img style="max-height: 360px" src="{{ house.image.url }}">
-                {% endif %}
+    <div class="container-md mt-3 mb-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
+                <li class="breadcrumb-item"><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ house.title }}</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container-md mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if house.image %}
+                                <img src="{{ house.image.url }}" class="d-block w-100" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if house.image2 %}
+                                <img src="{{ house.image2.url }}" class="d-block w-100" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if house.image3 %}
+                                <img src="{{ house.image3.url }}" class="d-block w-100" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if house.image4 %}
+                                <img src="{{ house.image4.url }}" class="d-block w-100" alt="...">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if house.image5 %}
+                                <img src="{{ house.image5.url }}" class="d-block w-100" alt="...">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
-
-            <div><h2>Описание: </h2>
-                {{ house.description }}
+            <div class="col-md-3">
+                <h1>${{ house.price }}</h1>
+                <p class="lead">{{ house.title }}</p>
+                <p><strong>Адрес:</strong> {{ house.address }}</p>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Связаться
+                </button>
+                <!-- Modal -->
+                <div class=" modal fade
+                " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты продавца</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Имя:</strong> {{ flat.creator.profile.first_name }}</p>
+                                <p><strong>Номер телефона:</strong> {{ flat.creator.profile.phone_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="parameters">
-                <h2>Параметры объекта</h2>
-                <p>Общая площадь: {{ house.total_area }} м²</p>
-                <p>Год постройки: {{ house.year_of_construction }}</p>
-                <p>Ремонт: {{ house.get_renovation_display }}</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Параметры объекта:</h2>
+                <p><strong>Количество этажей:</strong> {{ house.number_of_rooms }}</p>
+                <p><strong>Год постройки:</strong> {{ house.year_of_construction }}</p>
+                <p><strong>Общая площадь:</strong> {{ house.total_area }} м²</p>
+                <p><strong>Жилая площадь:</strong> {{ flat.living_area }} м²</p>
+                <p><strong>Площадь кухни:</strong> {{ flat.kitchen }} м²</p>
+                <p><strong>Состояние:</strong> {{ house.get_condition_display }}</p>
+                <p><strong>Ремонт:</strong> {{ house.get_renovation_display }}</p>
                 {% if house.facilities %}
-                    <p>{{ house.facilities }}</p>
+                    <p><strong>Обустройство дома:</strong> {{ house.facilities }}</p>
                 {% endif %}
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Описание</h2>
+                <p>{{ house.description }}</p>
             </div>
         </div>
     </div>
