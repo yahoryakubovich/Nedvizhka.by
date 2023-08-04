@@ -48,7 +48,8 @@
                     <div class="col-md-3">
                         <div class="card" style="width: 18rem;">
                             {% if flat.image %}
-                                <img src="{{ flat.image.url }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
+                                <img src="{{ flat.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
                             {% endif %}
                             <div class="card-body">
                                 <a style="text-decoration: none; color: black;"
@@ -78,10 +79,13 @@
             {% for house in house_queryset|slice:":5" %}
                 <div class="card" style="width: 18rem;">
                     {% if house.image %}
-                        <img src="{{ house.image.url }}" class="card-img-top" alt="...">
+                        <img src="{{ house.image.url }}" class="card-img-top" alt="..."
+                             style="width: 100%; height: 200px">
                     {% endif %}
                     <div class="card-body">
-                        <a href="http://127.0.0.1:8000/sale/flat/{{ flat.id }}"><h4>{{ house.title }}</h4>
+                        <a style="text-decoration: none; color: black;"
+                           href="http://127.0.0.1:8000/sale/house/{{ house.id }}">
+                            <h4>{{ house.number_of_floors }}-этажный {{ house.get_category_display }}</h4>
                         </a>
                         <p class="card-text">{{ house.description|slice:":250" }}...</p>
                     </div>
@@ -98,18 +102,25 @@
             отдельные
             гаражи, гаражные кооперативы и парковки.</p>
         {% if garage_queryset %}
-            {% for garage in garage_queryset|slice:":5" %}
-                <div class="card" style="width: 18rem;">
-                    {% if garage.image %}
-                        <img src="{{ garage.image.url }}" class="card-img-top" alt="...">
-                    {% endif %}
-                    <div class="card-body">
-                        <a href="http://127.0.0.1:8000/sale/flat/{{ garage.id }}"><h4>{{ garage.title }}</h4>
-                        </a>
-                        <p class="card-text">{{ garage.description|slice:":250" }}...</p>
+            <div class="row">
+                {% for garage in garage_queryset|slice:"4" %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if garage.image %}
+                                <img src="{{ garage.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <a style="text-decoration: none; color: black;"
+                                   href="http://127.0.0.1:8000/sale/garage/{{ garage.id }}">
+                                    <h4>Гараж {{ garage.total_area }}м² {{ garage.address }}</h4>
+                                </a>
+                                <p class="card-text">{{ garage.description|slice:":250" }}...</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
     <div class="container-md mt-3 mb-3">

@@ -146,11 +146,10 @@ class Realty(models.Model):
 
 class Garage(Realty):
     quantity_parking_spaces = models.PositiveIntegerField(
-        validators=[MinValueValidator(1)])  # Валидатор для количества парковочных мест
-    heating = models.CharField(choices=HEATING, max_length=20)
+        validators=[MinValueValidator(1)], default=1)  # Валидатор для количества парковочных мест
+    heating = models.CharField(choices=HEATING, max_length=20, blank=True)
     condition = None
     renovation = None
-
 
 
 class Parking(Realty):
@@ -160,13 +159,11 @@ class Parking(Realty):
     renovation = None
 
 
-
 class Warehouse(Realty):
     number_of_separate_premises = models.PositiveIntegerField(
         validators=[MinValueValidator(1)])  # Валидатор для количества отдельных помещений
     condition = None
     renovation = None
-
 
 
 class Office(Realty):
@@ -176,7 +173,6 @@ class Office(Realty):
 class Trade(Realty):
     location = models.CharField(choices=LOCATION, max_length=20)
     renovation = None
-
 
 
 class Industrial(Realty):
@@ -200,6 +196,7 @@ class Flat(Realty):
 class House(Realty):
     yard_area = models.FloatField()
     category = models.CharField(max_length=20, choices=CATEGORY)
+    bathroom = models.CharField(max_length=20, choices=BATHROOM)
     heating = models.CharField(max_length=20, choices=HEATING)
     water = models.CharField(max_length=20, choices=WATER)
     sewerage = models.CharField(max_length=20, choices=SEWERAGE)
@@ -207,4 +204,3 @@ class House(Realty):
     number_of_floors = models.PositiveIntegerField(validators=[MinValueValidator(1)])  # Валидатор для количества этажей
     living_area = models.FloatField(validators=[MinValueValidator(0)])  # Валидатор для жилой площади
     year_of_construction = models.PositiveIntegerField(validators=[validate_year_of_construction])
-

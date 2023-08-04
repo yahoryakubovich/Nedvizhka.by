@@ -7,7 +7,7 @@
                 <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
                 <li class="breadcrumb-item"><a href="#">Продажа</a></li>
                 <li class="breadcrumb-item"><a href="{% url "flat" %}">Квартиры</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ flat.title }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ flat.number_of_rooms }}-комнатная квартира {{ flat.address }}</li>
             </ol>
         </nav>
     </div>
@@ -62,13 +62,16 @@
             <div class="col-md-3">
                 <h1>${{ flat.price }}</h1>
                 <p class="lead">{{ flat.number_of_rooms }}-комнатная квартира</p>
-                <p>{{ flat.get_district_display }} район</p>
+                {% if flat.district %}
+                    <p>{{ flat.get_district_display }} район</p>
+                {% endif %}
                 <p><strong>Адрес:</strong> {{ flat.address }}</p>
-                <p><strong>Cтанция метро: </strong>{{ flat.get_subway_display }}</p>
+                {% if flat.subway %}
+                    <p><strong>Cтанция метро: </strong>{{ flat.get_subway_display }}</p>
+                {% endif %}
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Позвонить
                 </button>
-
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">

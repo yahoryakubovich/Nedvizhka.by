@@ -1,28 +1,117 @@
 {% extends "base.html" %}
-{% block title %} Недвижка.бай: {{ garage.title }} {% endblock %}
-
+{% block title %} Недвижка.бай: Гараж {{ garage.total_area }}м² {{ garage.address }}
+{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="address-title">
-            <p>г. Минск {{ garage.address }}</p>
-            <h2>{{ garage.title }}</h2>
-            <div class="product-photo">
-                {% if garage.image %}
-                    <img style="max-height: 360px" src="{{ garage.image.url }}">
+    <div class="container-md mt-3 mb-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
+                <li class="breadcrumb-item"><a href="{% url "garage" %}">Гаражи</a></li>
+                <li class="breadcrumb-item active"
+                    aria-current="page">Гараж {{ garage.total_area }}м²
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container-md mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if garage.image %}
+                                <img src="{{ garage.image.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if garage.image_2 %}
+                                <img src="{{ garage.image_2.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if garage.image_3 %}
+                                <img src="{{ garage.image_3.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if garage.image_4 %}
+                                <img src="{{ garage.image_4.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if garage.image_5 %}
+                                <img src="{{ garage.image_5.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1>${{ garage.price }}</h1>
+                <p class="lead">Гараж {{ garage.total_area }}м²</p>
+                {% if garage.district %}
+                    <p>{{ garage.get_district_display }} район</p>
                 {% endif %}
+                <p><strong>Адрес:</strong> {{ garage.address }}</p>
+                {% if garage.subway %}
+                    <p><strong>Cтанция метро: </strong>{{ garage.get_subway_display }}</p>
+                {% endif %}
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Позвонить
+                </button>
+                <!-- Modal -->
+                <div class=" modal fade
+                " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты продавца</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Имя:</strong> {{ garage.creator.profile.first_name }}</p>
+                                <p><strong>Номер телефона:</strong> {{ garage.creator.profile.phone_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div><h2>Описание: </h2>
-                {{ garage.description }}
-            </div>
-            <div class="parameters">
-                <h2>Параметры объекта</h2>
-                <p>Общая площадь: {{ garage.total_area }} м²</p>
-                <p>Год постройки: {{ garage.year_of_construction }}</p>
-                <p>Ремонт: {{ garage.get_renovation_display }}</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Параметры объекта:</h2>
+                <p><strong>Общая площадь:</strong> {{ garage.total_area }} м²</p>
+                <p><strong>Количество парковочных мест:</strong> {{ garage.quantity_parking_spaces }}</p>
+                {% if garage.heating %}
+                    <p><strong>Отопление:</strong> {{ garage.get_heating_display }}</p>
+                {% endif %}
                 {% if garage.facilities %}
-                    <p>{{ garage.facilities }}</p>
+                    <p><strong>Обустройство гаража:</strong> {{ garage.facilities }}</p>
                 {% endif %}
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Описание</h2>
+                <p>{{ garage.description }}</p>
             </div>
         </div>
     </div>

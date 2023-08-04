@@ -13,7 +13,9 @@
     {% for house in house_list %}
         <div class="container-md mt-3 mb-3">
             <div class="card" style="width: 48rem;">
-                {% if house.image %}<img src="{{ house.image.url }}" class="card-img-top" alt="..."> {% endif %}
+                {% if house.image %}
+                    <img src="{{ house.image.url }}" class="card-img-top" alt="..." style="width: 100%; height: 500px">
+                {% endif %}
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ house.title }}</h5>
                     <p class="card-text">{{ house.address }}</p>
