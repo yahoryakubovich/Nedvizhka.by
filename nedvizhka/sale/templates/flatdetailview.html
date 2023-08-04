@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Продажа: {{ flat.title }}{% endblock %}
+{% block title %} Продажа: {{ flat.number_of_rooms }}-комнатная квартира {{ flat.address }}{% endblock %}
 {% block content %}
     <div class="container-md mt-3 mb-3">
         <nav aria-label="breadcrumb">
@@ -18,27 +18,32 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             {% if flat.image %}
-                                <img src="{{ flat.image.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 500px">
+                                <img src="{{ flat.image.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
                             {% if flat.image_2 %}
-                                <img src="{{ flat.image_2.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 500px">
+                                <img src="{{ flat.image_2.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
                             {% if flat.image_3 %}
-                                <img src="{{ flat.image_3.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 500px">
+                                <img src="{{ flat.image_3.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
                             {% if flat.image_4 %}
-                                <img src="{{ flat.image_4.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 500px">
+                                <img src="{{ flat.image_4.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
                             {% if flat.image_5 %}
-                                <img src="{{ flat.image_5.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 500px">>
+                                <img src="{{ flat.image_5.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
                             {% endif %}
                         </div>
                     </div>
@@ -57,9 +62,11 @@
             <div class="col-md-3">
                 <h1>${{ flat.price }}</h1>
                 <p class="lead">{{ flat.number_of_rooms }}-комнатная квартира</p>
+                <p>{{ flat.get_district_display }} район</p>
                 <p><strong>Адрес:</strong> {{ flat.address }}</p>
+                <p><strong>Cтанция метро: </strong>{{ flat.get_subway_display }}</p>
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Связаться
+                    Позвонить
                 </button>
 
                 <!-- Modal -->
@@ -84,18 +91,21 @@
         <div class="row mt-5">
             <div class="col-md-6">
                 <h2>Параметры объекта:</h2>
+                <p><strong>Этаж:</strong> {{ flat.floor_number }}/{{ flat.number_of_floors }}</p>
                 <p><strong>Количество комнат:</strong> {{ flat.number_of_rooms }}</p>
-                <p><strong>Этаж:</strong> {{ flat.floor_number }}</p>
-                <p><strong>Год постройки:</strong> {{ flat.year_of_construction }}</p>
+                <p><strong>Санузел:</strong> {{ flat.get_bathroom_display }}</p>
+                <p><strong>Балкон:</strong> {{ flat.get_balcony_display }}</p>
                 <p><strong>Общая площадь:</strong> {{ flat.total_area }} м²</p>
                 <p><strong>Жилая площадь:</strong> {{ flat.living_area }} м²</p>
-                <p><strong>Площадь кухни:</strong> {{ flat.kitchen }} м²</p>
+                {% if flat.kitchen %}
+                    <p><strong>Площадь кухни:</strong> {{ flat.kitchen }} м²</p>
+                {% endif %}
                 <p><strong>Состояние:</strong> {{ flat.get_condition_display }}</p>
                 <p><strong>Ремонт:</strong> {{ flat.get_renovation_display }}</p>
+                <p><strong>Год постройки:</strong> {{ flat.year_of_construction }}</p>
                 {% if flat.facilities %}
                     <p><strong>Обустройство дома:</strong> {{ flat.facilities }}</p>
                 {% endif %}
-
             </div>
         </div>
         <div class="row mt-5">
