@@ -102,8 +102,7 @@ class FlatUpdateViewTest(TestCase):
         self.assertEqual(form['kitchen'].value(), self.flat.kitchen)
         self.assertEqual(form['year_of_construction'].value(), self.flat.year_of_construction)
 
-    def test_view_updates_object_after_successful_form_submission(
-            self):  # чтобы этот тест заработал надо убрать модерацию т.к при update is_moderated != True
+    def test_view_updates_object_after_successful_form_submission(self): # чтобы этот тест заработал надо убрать модерацию т.к при update is_moderated != True
         self.client.login(username='testuser', password='testpassword')
         data = {
             'title': 'Updated Flat',

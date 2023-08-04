@@ -1,22 +1,28 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить торговый павильон {% endblock %}
 {% block content %}
-    <div class="navigation">
-        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа торговых павильон</h1>
+    <div class="container-md mt-3 mb-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Торговые павильоны и помещения</li>
+            </ol>
+        </nav>
     </div>
-    <div class="container">
-        {% for trade in trade_list %}
-            <div class="product-card">
-                {% if trade.image %}<img style="max-height: 360px" src="{{ trade.image.url }}"> {% endif %}
-                <div class="product-details">
-                    <h2>{{ trade.title }}</h2>
-                    <h3>{{ trade.address }}</h3>
-                    <h3>Общая площадь: {{ trade.total_area }} м&sup2;</h3>
-                    <h3><b>$</b>{{ trade.price }}</h3>
-                    <p>text</p>
-                    <a href="{{ trade.id }}" class="buy-btn">Показать контакты</a>
+    {% for trade in trade_list %}
+        <div class="container-md mt-3 mb-3">
+            <div class="card" style="width: 48rem;">
+                {% if trade.image %}<img src="{{ trade.image.url }}" class="card-img-top" alt="..."> {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ trade.title }}</h5>
+                    <p class="card-text">{{ trade.address }}</p>
+                    <p class="card-text"><strong>{{ trade.total_area }} м²</strong></p>
+                    <p class="card-text"><strong>$ {{ trade.price }}</strong></p>
+                    <p class="card-text">{{ trade.description|slice:":250" }}...</p>
+                    <a href="{{ trade.id }}" class="btn btn-success mt-auto">Показать контакты</a>
                 </div>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
 {% endblock %}

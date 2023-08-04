@@ -1,22 +1,28 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: купить склад {% endblock %}
 {% block content %}
-    <div class="navigation">
-        <h1><a href="{% url "nedvizhka" %}">Главная</a> > Продажа > Продажа складов</h1>
+    <div class="container-md mt-3 mb-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cклады</li>
+            </ol>
+        </nav>
     </div>
-    <div class="container">
-        {% for warehouse in warehouse_list %}
-            <div class="product-card">
-                {% if warehouse.image %}<img style="max-height: 360px" src="{{ warehouse.image.url }}"> {% endif %}
-                <div class="product-details">
-                    <<h2>{{ warehouse.title }}</h2>
-                    <h3>{{ warehouse.address }}</h3>
-                    <h3>Общая площадь: {{ warehouse.total_area }} м&sup2;</h3>
-                    <h3><b>$</b>{{ warehouse.price }}</h3>
-                    <p>text</p>
-                    <a href="{{ warehouse.id }}" class="buy-btn">Показать контакты</a>
+    {% for warehouse in warehouse_list %}
+        <div class="container-md mt-3 mb-3">
+            <div class="card" style="width: 48rem;">
+                {% if warehouse.image %}<img src="{{ warehouse.image.url }}" class="card-img-top" alt="..."> {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ warehouse.title }}</h5>
+                    <p class="card-text">{{ warehouse.address }}</p>
+                    <p class="card-text"><strong>{{ warehouse.total_area }} м²</strong></p>
+                    <p class="card-text"><strong>$ {{ warehouse.price }}</strong></p>
+                    <p class="card-text">{{ warehouse.description|slice:":250" }}...</p>
+                    <a href="{{ warehouse.id }}" class="btn btn-success mt-auto">Показать контакты</a>
                 </div>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
 {% endblock %}
