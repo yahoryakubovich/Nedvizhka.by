@@ -1,28 +1,114 @@
 {% extends "base.html" %}
-{% block title %} Недвижка.бай: {{ parking.title }} {% endblock %}
-
+{% block title %} Недвижка.бай: Cтоянка {{ parking.total_area }}м² {{ garage.address }}
+{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="address-title">
-            <p>г. Минск {{ parking.address }}</p>
-            <h2>{{ parking.title }}</h2>
-            <div class="product-photo">
-                {% if parking.image %}
-                    <img style="max-height: 360px" src="{{ parking.image.url }}">
+    <div class="container-md mt-3 mb-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
+                <li class="breadcrumb-item"><a href="{% url "parking" %}">Стоянки</a></li>
+                <li class="breadcrumb-item active"
+                    aria-current="page">Cтоянка {{ parking.total_area }}м²
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container-md mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if parking.image %}
+                                <img src="{{ parking.image.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if parking.image_2 %}
+                                <img src="{{ parking.image_2.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if parking.image_3 %}
+                                <img src="{{ parking.image_3.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if parking.image_4 %}
+                                <img src="{{ parking.image_4.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if parking.image_5 %}
+                                <img src="{{ parking.image_5.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1>${{ parking.price }}</h1>
+                <p class="lead">Стоянка {{ parking.total_area }}м²</p>
+                {% if parking.district %}
+                    <p>{{ parking.get_district_display }} район</p>
+                {% endif %}
+                <p><strong>Адрес:</strong> {{ parking.address }}</p>
+                {% if parking.subway %}
+                    <p><strong>Cтанция метро: </strong>{{ parking.get_subway_display }}</p>
+                {% endif %}
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Позвонить
+                </button>
+                <!-- Modal -->
+                <div class=" modal fade
+                " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты продавца</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Имя:</strong> {{ parking.creator.profile.first_name }}</p>
+                                <p><strong>Номер телефона:</strong> {{ parking.creator.profile.phone_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Параметры объекта:</h2>
+                <p><strong>Общая площадь:</strong> {{ parking.total_area }} м²</p>
+                <p><strong>Количество парковочных мест:</strong> {{ parking.quantity_parking_spaces }}</p>
+                {% if garage.facilities %}
+                    <p><strong>Обустройство стоянки:</strong> {{ parking.facilities }}</p>
                 {% endif %}
             </div>
-
-            <div><h2>Описание: </h2>
-                {{ parking.description }}
-            </div>
-            <div class="parameters">
-                <h2>Параметры объекта</h2>
-                <p>Общая площадь: {{ parking.total_area }} м²</p>
-                <p>Год постройки: {{ parking.year_of_construction }}</p>
-                <p>Ремонт: {{ parking.get_renovation_display }}</p>
-                {% if parking.facilities %}
-                    <p>{{ parking.facilities }}</p>
-                {% endif %}
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Описание</h2>
+                <p>{{ parking.description }}</p>
             </div>
         </div>
     </div>
