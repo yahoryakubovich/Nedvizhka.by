@@ -9,13 +9,6 @@
         </nav>
     </div>
     <div class="container-md mt-3 mb-3">
-        <form method="GET" action="{% url 'real_estate_search' %}" class="d-flex" role="search">
-            <input class="form-control me-2" type="text" name="search" id="id_search"
-                   placeholder="Введите поисковый запрос...">
-            <button class="btn btn-success" type="submit">Поиск</button>
-        </form>
-    </div>
-    <div class="container-md mt-3 mb-3">
         <h2>Найдите свою идеальную недвижимость</h2>
     </div>
     <div class="container-md mt-3 mb-3">
@@ -130,17 +123,26 @@
             аэропортах и
             других местах. Стоянки предоставляют удобное место для временного или постоянного хранения
             автомобилей, обеспечивая безопасность и доступность.</p>
-        {% if parking_queryset %}
-            {% for parking in parking_queryset|slice:":5" %}
-                <div class="ad">
-                    {% if parking.image %}
-                        <img style="max-height: 128px" src="{{ parking.image.url }}"> {% endif %}
-                    <a href="http://127.0.0.1:8000/sale/parking/{{ parking.id }}">
-                        <h4>{{ parking.title }}</h4>
-                    </a>
-                    <p>{{ parking.description|slice:'64' }}..</p>
-                </div>
-            {% endfor %}
+        {% if garage_queryset %}
+            <div class="row">
+                {% for parking in parking_queryset|slice:"4" %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if parking.image %}
+                                <img src="{{ parking.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <a style="text-decoration: none; color: black;"
+                                   href="http://127.0.0.1:8000/sale/garage/{{ parking.id }}">
+                                    <h4>Стоянка {{ parking.total_area }}м² {{ parking.address }}</h4>
+                                </a>
+                                <p class="card-text">{{ parking.description|slice:":250" }}...</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
     <div class="container-md mt-3 mb-3">
@@ -152,15 +154,25 @@
             комфортные
             условия для бизнеса и организаций.</p>
         {% if office_queryset %}
-            {% for office in office_queryset|slice:":5" %}
-                <div class="ad">
-                    {% if office.image %}
-                        <img style="max-height: 128px" src="{{ office.image.url }}"> {% endif %}
-                    <a href="http://127.0.0.1:8000/sale/office/{{ office.id }}">
-                        <h4>{{ office.title }}</h4></a>
-                    <p>{{ office.description|slice:'64' }}..</p>
-                </div>
-            {% endfor %}
+            <div class="row">
+                {% for office in office_queryset|slice:"4" %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if office.image %}
+                                <img src="{{ office.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <a style="text-decoration: none; color: black;"
+                                   href="http://127.0.0.1:8000/sale/office/{{ office.id }}">
+                                    <h4>Офис {{ office.total_area }}м² {{ office.address }}</h4>
+                                </a>
+                                <p class="card-text">{{ office.description|slice:":250" }}...</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
     <div class="container-md mt-3 mb-3">
@@ -174,15 +186,25 @@
             и
             предлагают просторное пространство и удобства для логистики и бизнеса.</p>
         {% if warehouse_queryset %}
-            {% for warehouse in warehouse_queryset|slice:":5" %}
-                <div class="ad">
-                    {% if warehouse.image %}
-                        <img style="max-height: 128px" src="{{ warehouse.image.url }}"> {% endif %}
-                    <a href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}">
-                        <h4>{{ warehouse.title }}</h4></a>
-                    <p>{{ warehouse.description|slice:'64' }}..</p>
-                </div>
-            {% endfor %}
+            <div class="row">
+                {% for warehouse in warehouse_queryset|slice:"4" %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if warehouse.image %}
+                                <img src="{{ warehouse.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <a style="text-decoration: none; color: black;"
+                                   href="http://127.0.0.1:8000/sale/warehouse/{{ warehouse.id }}">
+                                    <h4>Cклад {{ warehouse.total_area }}м² {{ warehouse.address }}</h4>
+                                </a>
+                                <p class="card-text">{{ warehouse.description|slice:":250" }}...</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
     <div class="container-md mt-3 mb-3">
@@ -191,15 +213,25 @@
             павильонов. Здесь вы можете найти предложения о торговых помещениях в торговых центрах.
         </p>
         {% if trade_queryset %}
-            {% for trade in trade_queryset|slice:":5" %}
-                <div class="ad">
-                    {% if trade.image %}
-                        <img style="max-height: 128px" src="{{ trade.image.url }}"> {% endif %}
-                    <a href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}"><h4>{{ trade.title }}</h4>
-                    </a>
-                    <p>{{ trade.description|slice:'64' }}..</p>
-                </div>
-            {% endfor %}
+            <div class="row">
+                {% for trade in trade_queryset|slice:"4" %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if trade.image %}
+                                <img src="{{ trade.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <a style="text-decoration: none; color: black;"
+                                   href="http://127.0.0.1:8000/sale/trade/{{ trade.id }}">
+                                    <h4>Торговый павильон {{ trade.total_area }}м² {{ trade.address }}</h4>
+                                </a>
+                                <p class="card-text">{{ trade.description|slice:":250" }}...</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
     <div class="container-md mt-3 mb-3">
@@ -211,15 +243,25 @@
             предназначенных для
             осуществления технической деятельности.</p>
         {% if industrial_queryset %}
-            {% for industrial in industrial_queryset|slice:":5" %}
-                <div class="ad">
-                    {% if  industrial.image %}
-                        <img style="max-height: 128px" src="{{ industrial.image.url }}"> {% endif %}
-                    <a href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}">
-                        <h4>{{ industrial.title }}</h4></a>
-                    <p>{{ industrial.description|slice:'64' }}..</p>
-                </div>
-            {% endfor %}
+            <div class="row">
+                {% for industrial in industrial_queryset|slice:"4" %}
+                    <div class="col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if industrial.image %}
+                                <img src="{{ industrial.image.url }}" class="card-img-top" alt="..."
+                                     style="width: 100%; height: 200px">
+                            {% endif %}
+                            <div class="card-body">
+                                <a style="text-decoration: none; color: black;"
+                                   href="http://127.0.0.1:8000/sale/industrial/{{ industrial.id }}">
+                                    <h4>Техническое помещение {{ industrial.total_area }}м² {{ industrial.address }}</h4>
+                                </a>
+                                <p class="card-text">{{ industrial.description|slice:":250" }}...</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}

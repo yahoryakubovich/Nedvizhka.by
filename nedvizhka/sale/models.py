@@ -117,8 +117,8 @@ SUBWAY = [
 ]
 
 LOCATION = [
-    ("S", "отдельное здание"),
-    ("M", "в торговом центре")
+    ("S", "Отдельное здание"),
+    ("M", "В другом здании")
 ]
 
 
@@ -162,23 +162,24 @@ class Parking(Realty):
 class Warehouse(Realty):
     number_of_separate_premises = models.PositiveIntegerField(
         validators=[MinValueValidator(1)])  # Валидатор для количества отдельных помещений
-    condition = None
+    condition = models.CharField(max_length=20, choices=CONDITION, blank=True)
     renovation = None
 
 
 class Office(Realty):
+    number_of_separate_premises = models.PositiveIntegerField(blank=True)
+    number_of_floors = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     floor_number = models.PositiveIntegerField(validators=[MinValueValidator(1)])  # Валидатор для номера этажа
 
 
 class Trade(Realty):
     location = models.CharField(choices=LOCATION, max_length=20)
-    renovation = None
 
 
 class Industrial(Realty):
     number_of_separate_premises = models.PositiveIntegerField(
         validators=[MinValueValidator(1)])  # Валидатор для количества отдельных помещений
-    condition = None
+    condition = models.CharField(max_length=20, choices=CONDITION, blank=True)
     renovation = None
 
 

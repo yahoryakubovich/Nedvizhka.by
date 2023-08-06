@@ -6,9 +6,11 @@
     <div class="container-md mt-3 mb-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
-                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
-                <li class="breadcrumb-item"><a href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;"
+                                               href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="#">Продажа</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "house" %}">Дома,
+                    коттеджи, усадьбы</a></li>
                 <li class="breadcrumb-item active"
                     aria-current="page">{{ house.number_of_floors }}-этажный {{ house.get_category_display }} {{ house.address }}</li>
             </ol>
@@ -19,31 +21,36 @@
             <div class="col-md-6">
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            {% if house.image %}
-                                <img src="{{ house.image.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 450px">
-                            {% endif %}
-                        </div>
-                        <div class="carousel-item">
-                            {% if house.image_2 %}
-                                <img src="{{ house.image_2.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 450px">
-                            {% endif %}
-                        </div>
-                        <div class="carousel-item">
-                            {% if house.image_3 %}
-                                <img src="{{ house.image_3.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 450px">
-                            {% endif %}
-                        </div>
-                        <div class="carousel-item">
-                            {% if house.image_4 %}
-                                <img src="{{ house.image_4.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 450px">
-                            {% endif %}
-                        </div>
-                        <div class="carousel-item">
-                            {% if house.image_5 %}
-                                <img src="{{ house.image_5.url }}" class="d-block w-100" alt="..." style="width: 100%; height: 450px">
-                            {% endif %}
-                        </div>
+                        {% if house.image %}
+                            <div class="carousel-item active">
+                                <img src="{{ house.image.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if house.image_2 %}
+                            <div class="carousel-item">
+                                <img src="{{ house.image_2.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if house.image_3 %}
+                            <div class="carousel-item">
+                                <img src="{{ house.image_3.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if house.image_4 %}
+                            <div class="carousel-item">
+                                <img src="{{ house.image_4.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if house.image_5 %}
+                            <div class="carousel-item">
+                                <img src="{{ house.image_5.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev">

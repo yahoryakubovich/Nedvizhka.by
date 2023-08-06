@@ -4,8 +4,8 @@
     <div class="container-md mt-3 mb-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url "nedvizhka" %}">Главная</a></li>
-                <li class="breadcrumb-item"><a href="#">Продажа</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="#">Продажа</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cклады</li>
             </ol>
         </nav>
@@ -13,12 +13,12 @@
     {% for warehouse in warehouse_list %}
         <div class="container-md mt-3 mb-3">
             <div class="card" style="width: 48rem;">
-                {% if warehouse.image %}<img src="{{ warehouse.image.url }}" class="card-img-top" alt="..."> {% endif %}
+                {% if warehouse.image %}
+                    <img src="{{ warehouse.image.url }}" class="card-img-top" alt="..." style="width: 100%; height: 500px">
+                {% endif %}
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ warehouse.title }}</h5>
-                    <p class="card-text">{{ warehouse.address }}</p>
-                    <p class="card-text"><strong>{{ warehouse.total_area }} м²</strong></p>
-                    <p class="card-text"><strong>$ {{ warehouse.price }}</strong></p>
+                    <h5 class="card-title">Cклад {{ warehouse.total_area }} м² {{ office.address }}</h5>
+                    <p class="card-text"><strong>${{ warehouse.price }}</strong></p>
                     <p class="card-text">{{ warehouse.description|slice:":250" }}...</p>
                     <a href="{{ warehouse.id }}" class="btn btn-success mt-auto">Показать контакты</a>
                 </div>

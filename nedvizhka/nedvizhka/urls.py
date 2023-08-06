@@ -11,7 +11,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('sale/', include('sale.urls')),
-    path('search/', real_estate_search, name='real_estate_search'),
     path('accounts/profile/', include('user_profile.urls')),
     path('api/', include('api.urls'))
 ]
