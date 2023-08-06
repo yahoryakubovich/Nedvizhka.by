@@ -1,13 +1,25 @@
 {% extends "base.html" %}
 {% block title %} Недвижка.бай: редактирование объявления {% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="product-info">
-            <h2>Редактирование объявления</h2>
-            <form method="post">{% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Изменить</button>
-            </form>
-        </div>
+    <div class="container-md mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;"
+                                               href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;"
+                                               href="{% url "account_login" %}">Профиль</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Редактирование объявления</li>
+            </ol>
+        </nav>
     </div>
+    <div class="container-md mt-3 mb-3">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Изменить</button>
+                </form>
+            </div>
 {% endblock %}
