@@ -10,7 +10,8 @@ class FlatForm(forms.ModelForm):
         model = Flat
         exclude = ['is_moderated', 'creator']
         labels = {
-            'title': 'Заголовок',
+            'district': 'Район',
+            'subway': 'Метро',
             'description': 'Описание',
             'facilities': 'Удобства',
             'total_area': 'Общая площадь',
@@ -19,9 +20,16 @@ class FlatForm(forms.ModelForm):
             'condition': 'Состояние',
             'renovation': 'Ремонт',
             'price': 'Цена',
-            'image': 'Фотография',
+            'image': 'Фотография 1',
+            'image_2': 'Фотография 2',
+            'image_3': 'Фотография 3',
+            'image_4': 'Фотография 4',
+            'image_5': 'Фотография 5',
             'number_of_rooms': 'Количество комнат',
+            'balcony': 'Балкон',
+            'bathroom': 'Санузел',
             'floor_number': 'Этаж',
+            'number_of_floors': 'Этажность дома',
             'living_area': 'Жилая площадь',
             'year_of_construction': 'Год постройки',
         }

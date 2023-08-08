@@ -2,12 +2,10 @@
 {% block title %} Недвижка.бай: добавление объявления {% endblock %}
 {% block content %}
     <div class="container">
-        <div class="search">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Сохранить</button>
-            </form>
-        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Отправить</button>
+        </form>
     </div>
 {% endblock %}
