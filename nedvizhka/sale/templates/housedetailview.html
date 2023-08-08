@@ -9,8 +9,7 @@
                 <li class="breadcrumb-item"><a style="text-decoration: none; color: black;"
                                                href="{% url "nedvizhka" %}">Главная</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="#">Продажа</a></li>
-                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "house" %}">Дома,
-                    коттеджи, усадьбы</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "house" %}">Дома, коттеджи, усадьбы</a></li>
                 <li class="breadcrumb-item active"
                     aria-current="page">{{ house.number_of_floors }}-этажный {{ house.get_category_display }} {{ house.address }}</li>
             </ol>

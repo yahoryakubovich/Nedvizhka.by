@@ -149,7 +149,7 @@ class OfficeDetailView(DetailView):
 
 
 class TradeDetailView(DetailView):
-    model = Parking
+    model = Trade
     template_name = "tradedetailview.html"
 
     def get(self, request, *args, **kwargs):
@@ -159,7 +159,7 @@ class TradeDetailView(DetailView):
 
 
 class IndustrialDetailView(DetailView):
-    model = Parking
+    model = Industrial
     template_name = "industrialdetailview.html"
 
     def get(self, request, *args, **kwargs):

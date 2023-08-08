@@ -1,28 +1,117 @@
 {% extends "base.html" %}
-{% block title %} Недвижка.бай: {{ warehouse.title }} {% endblock %}
-
+{% block title %}
+    Купить склад {{ warehouse.total_area }} м² {{ warehouse.address }}
+{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="address-title">
-            <p>г. Минск {{ warehouse.address }}</p>
-            <h2>{{ warehouse.title }}</h2>
-            <div class="product-photo">
-                {% if warehouse.image %}
-                    <img style="max-height: 360px" src="{{ warehouse.image.url }}">
+    <div class="container-md mt-3 mb-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="#">Продажа</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "warehouse" %}">Склады</a>
+                </li>
+                <li class="breadcrumb-item active"
+                    aria-current="page">Склад {{ warehouse.total_area }} {{ warehouse.address }}</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container-md mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        {% if warehouse.image %}
+                            <div class="carousel-item active">
+                                <img src="{{ warehouse.image.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if warehouse.image_2 %}
+                            <div class="carousel-item">
+                                <img src="{{ warehouse.image_2.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if warehouse.image_3 %}
+                            <div class="carousel-item">
+                                <img src="{{ warehouse.image_3.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if warehouse.image_4 %}
+                            <div class="carousel-item">
+                                <img src="{{ warehouse.image_4.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                        {% if warehouse.image_5 %}
+                            <div class="carousel-item">
+                                <img src="{{ warehouse.image_5.url }}" class="d-block w-100" alt="..."
+                                     style="width: 100%; height: 450px">
+                            </div>
+                        {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1>${{ warehouse.price }}</h1>
+                <p class="lead">Cклад {{ warehouse.total_area }} м²</p>
+                {% if warehouse.district %}
+                    <p>{{ warehouse.get_district_display }} район</p>
                 {% endif %}
+                <p><strong>Адрес:</strong> {{ warehouse.address }}</p>
+                {% if warehouse.subway %}
+                    <p><strong>Cтанция метро: </strong>{{ warehouse.get_subway_display }}</p>
+                {% endif %}
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Позвонить
+                </button>
+                <!-- Modal -->
+                <div class=" modal fade
+                " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Контакты продавца</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Имя:</strong> {{ warehouse.creator.profile.first_name }}</p>
+                                <p><strong>Номер телефона:</strong> {{ warehouse.creator.profile.phone_number }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div><h2>Описание: </h2>
-                {{ warehouse.description }}
-            </div>
-            <div class="parameters">
-                <h2>Параметры объекта</h2>
-                <p>Общая площадь: {{ warehouse.total_area }} м²</p>
-                <p>Год постройки: {{ warehouse.year_of_construction }}</p>
-                <p>Ремонт: {{ warehouse.get_renovation_display }}</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                 <h2>Параметры объекта:</h2>
+                <p><strong>Количество раздельных помещений:</strong> {{ warehouse.number_of_separate_premises }}</p>
+                <p><strong>Общая площадь:</strong> {{ warehouse.total_area }} м²</p>
+                <p><strong>Жилая площадь:</strong> {{ warehouse.living_area }} м²</p>
+                <p><strong>Состояние:</strong> {{ warehouse.get_condition_display }}</p>
                 {% if warehouse.facilities %}
-                    <p>{{ warehouse.facilities }}</p>
+                    <p><strong>Обустройство склада:</strong> {{ warehouse.facilities }}</p>
                 {% endif %}
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Описание</h2>
+                <p>{{ warehouse.description }}</p>
             </div>
         </div>
     </div>
