@@ -11,7 +11,25 @@ class FlatListView(ListView):
     model = Flat
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        return context
 
 
 class FlatOneRoomListView(ListView):
@@ -20,17 +38,20 @@ class FlatOneRoomListView(ListView):
     def get_queryset(self):
         return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=1))
 
+
 class FlatTwoRoomListView(ListView):
     model = Flat
 
     def get_queryset(self):
         return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=2))
 
+
 class FlatThreeRoomListView(ListView):
     model = Flat
 
     def get_queryset(self):
         return super().get_queryset().filter(Q(is_moderated=True) & Q(number_of_rooms=3))
+
 
 class FlatFourRoomListView(ListView):
     model = Flat

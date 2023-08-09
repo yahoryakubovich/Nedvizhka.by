@@ -4,27 +4,44 @@
     <div class="container-md mt-3 mb-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="{% url "nedvizhka" %}">Главная</a></li>
+                <li class="breadcrumb-item"><a style="text-decoration: none; color: black;"
+                                               href="{% url "nedvizhka" %}">Главная</a></li>
                 <li class="breadcrumb-item"><a style="text-decoration: none; color: black;" href="#">Продажа</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Квартиры</li>
             </ol>
         </nav>
     </div>
-    {% for flat in flat_list %}
-        <div class="container-md mt-3 mb-3">
-            <div class="card" style="width: 48rem;">
-                {% if flat.image %}
-                    <img src="{{ flat.image.url }}" class="card-img-top" alt="..." style="width: 100%; height: 500px">
-                {% endif %}
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ flat.number_of_rooms }}-комнатная квартира {{ flat.address }}</h5>
-                    <p class="card-text"><strong>{{ flat.number_of_rooms }} комн. {{ flat.total_area }}
-                        м² {{ flat.floor_number }} этаж</strong></p>
-                    <p class="card-text"><strong>${{ flat.price }}</strong></p>
-                    <p class="card-text">{{ flat.description|slice:":250" }}...</p>
-                    <a href="{{ flat.id }}" class="btn btn-success mt-auto">Показать контакты</a>
+    <div class="container-md mt-3 mb-3">
+        <form method="GET" class="form-inline">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" class="form-control mr-2" name="min_price" placeholder="Мин. цена">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control mr-2" name="max_price" placeholder="Макс. цена">
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-outline-success">Поиск</button>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        </form>
+    </div>
+        {% for flat in flat_list %}
+            <div class="container-md mt-3 mb-3">
+                <div class="card" style="width: 48rem;">
+                    {% if flat.image %}
+                        <img src="{{ flat.image.url }}" class="card-img-top" alt="..."
+                             style="width: 100%; height: 500px">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ flat.number_of_rooms }}-комнатная квартира {{ flat.address }}</h5>
+                        <p class="card-text"><strong>{{ flat.number_of_rooms }} комн. {{ flat.total_area }}
+                            м² {{ flat.floor_number }} этаж</strong></p>
+                        <p class="card-text"><strong>${{ flat.price }}</strong></p>
+                        <p class="card-text">{{ flat.description|slice:":250" }}...</p>
+                        <a href="{{ flat.id }}" class="btn btn-success mt-auto">Показать контакты</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
 {% endblock %}
