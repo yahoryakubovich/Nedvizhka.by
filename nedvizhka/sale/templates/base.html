@@ -61,11 +61,13 @@
             </ul>
             <div class="d-flex gap-3">
                 <div class="d-grid gap-2 d-md-block">
-                    <a class="btn btn-success" href="{% url "create" %}" role="button">+ Добавить объявление</a>
+                    <a class="btn btn-success" href="{% url "create" %}" role="button">
+                        Добавить объявление</a>
                     {% if user.is_authenticated %}
-                    <a class="btn btn-outline-success" href="{% url "account_login" %}" role="button">Профиль</a>
+                        <a class="btn btn-success" href="{% url "account_login" %}" role="button">
+                            Профиль</a>
                     {% else %}
-                    <a class="btn btn-success" href="{% url "account_login" %}" role="button">Вход</a>
+                        <a class="btn btn-success" href="{% url "account_login" %}" role="button">Вход</a>
                     {% endif %}
                 </div>
             </div>

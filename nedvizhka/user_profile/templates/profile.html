@@ -20,8 +20,12 @@
             <p>Номер телефона: {{ profile.phone_number }}</p>
         {% endif %}
         <p>Дата регистрации: {{ profile.user.date_joined }}</p>
+    </div>
+    <div class="container-md mt-3 mb-3">
         <a class="btn btn btn-success " href="{% url "edit_profile" %}" role="button">Изменить</a>
         <a class="btn btn-danger" href="{% url "account_logout" %}" role="button">Выйти</a>
+    </div>
+    <div class="container-md mt-3 mb-3">
         <h2>Список моих объявлений:</h2>
         {% if flat_queryset %}
             <h3>Квартиры:</h3>
