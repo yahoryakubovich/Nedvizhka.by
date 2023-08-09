@@ -62,7 +62,11 @@
             <div class="d-flex gap-3">
                 <div class="d-grid gap-2 d-md-block">
                     <a class="btn btn-success" href="{% url "create" %}" role="button">+ Добавить объявление</a>
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-outline-success" href="{% url "account_login" %}" role="button">Профиль</a>
+                    {% else %}
                     <a class="btn btn-success" href="{% url "account_login" %}" role="button">Вход</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -103,7 +107,8 @@
 </nav>
 <nav class="navbar navbar-expand-lg bg-white border border-light">
     <div class="container-md">
-        <a class="nav-link" href="#">© 2015 - 2023, Nedvizhka.by. Копирование материалов допускается только при наличии активной ссылки.</a>
+        <a class="nav-link" href="#">© 2015 - 2023, Nedvizhka.by. Копирование материалов допускается только при наличии
+            активной ссылки.</a>
     </div>
 </nav>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
