@@ -74,50 +74,245 @@ class HouseListView(ListView):
     model = House
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 
 class GarageListView(ListView):
     model = Garage
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 
 class ParkingListView(ListView):
     model = Parking
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 
 class WarehouseListView(ListView):
     model = Warehouse
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 
 class OfficeListView(ListView):
     model = Office
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 
 class TradeListView(ListView):
     model = Trade
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
+
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 
 class IndustrialListView(ListView):
     model = Industrial
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_moderated=True)
+        queryset = super().get_queryset().filter(is_moderated=True)
 
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
+        subway = self.request.GET.get('subway')
+        district = self.request.GET.get('district')
+
+        if min_price and max_price:
+            queryset = queryset.filter(price__gte=min_price, price__lte=max_price)
+        elif min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        elif max_price:
+            queryset = queryset.filter(price__lte=max_price)
+
+        if subway:
+            queryset = queryset.filter(subway=subway)
+
+        if district:
+            queryset = queryset.filter(district=district)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['min_price'] = self.request.GET.get('min_price')
+        context['max_price'] = self.request.GET.get('max_price')
+        context['subway'] = self.request.GET.get('subway')
+        context['district'] = self.request.GET.get('district')
+        return context
 
 class FlatDetailView(DetailView):
     model = Flat

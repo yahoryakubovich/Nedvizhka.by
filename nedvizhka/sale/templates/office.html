@@ -11,6 +11,75 @@
             </ol>
         </nav>
     </div>
+    <div class="container-md mt-3 mb-3">
+        <form method="GET" class="form-inline">
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <input type="number" class="form-control mr-2" name="min_price" placeholder="Мин. цена">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control mr-2" name="max_price" placeholder="Макс. цена">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <select name="subway" class="form-select">
+                        <option value="">Выберите метро</option>
+                        <option value="110" class="bg-light text-dark">Малиновка</option>
+                        <option value="111" class="bg-light text-dark">Петровщина</option>
+                        <option value="112" class="bg-light text-dark">Михалово</option>
+                        <option value="113" class="bg-light text-dark">Грушевка</option>
+                        <option value="114" class="bg-light text-dark">Институт культуры</option>
+                        <option value="115" class="bg-light text-dark">Площадь Ленина</option>
+                        <option value="116" class="bg-light text-dark">Октябрьская</option>
+                        <option value="117" class="bg-light text-dark">Площадь Победы</option>
+                        <option value="118" class="bg-light text-dark">Площадь Якуба Коласа</option>
+                        <option value="119" class="bg-light text-dark">Академия Наук</option>
+                        <option value="120" class="bg-light text-dark">Парк Челюскинцев</option>
+                        <option value="121" class="bg-light text-dark">Московская</option>
+                        <option value="122" class="bg-light text-dark">Восток</option>
+                        <option value="123" class="bg-light text-dark">Борисовский тракт</option>
+                        <option value="124" class="bg-light text-dark">Уручье</option>
+                        <option value="210" class="bg-light text-dark">Каменная горка</option>
+                        <option value="211" class="bg-light text-dark">Кунцевщина</option>
+                        <option value="212" class="bg-light text-dark">Спортивная</option>
+                        <option value="213" class="bg-light text-dark">Пушкинская</option>
+                        <option value="214" class="bg-light text-dark">Молодёжная</option>
+                        <option value="215" class="bg-light text-dark">Фрунзенская</option>
+                        <option value="216" class="bg-light text-dark">Немига</option>
+                        <option value="217" class="bg-light text-dark">Купаловская</option>
+                        <option value="218" class="bg-light text-dark">Первомайская</option>
+                        <option value="219" class="bg-light text-dark">Пролетарская</option>
+                        <option value="220" class="bg-light text-dark">Тракторный завод</option>
+                        <option value="221" class="bg-light text-dark">Партизанская</option>
+                        <option value="222" class="bg-light text-dark">Автозаводская</option>
+                        <option value="223" class="bg-light text-dark">Могилёвская</option>
+                        <option value="313" class="bg-light text-dark">Ковальская Слобода</option>
+                        <option value="314" class="bg-light text-dark">Вокзальная</option>
+                        <option value="315" class="bg-light text-dark">Площадь Франтишка Богушевича</option>
+                        <option value="316" class="bg-light text-dark">Юбилейная площадь</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select name="district" class="form-select">
+                        <option value="">Выберите район</option>
+                        <option value="Z" class="bg-light text-dark">Заводской</option>
+                        <option value="L" class="bg-light text-dark">Ленинский</option>
+                        <option value="M" class="bg-light text-dark">Московский</option>
+                        <option value="O" class="bg-light text-dark">Октябрьский</option>
+                        <option value="P" class="bg-light text-dark">Партизанский</option>
+                        <option value="PM" class="bg-light text-dark">Первомайский</option>
+                        <option value="S" class="bg-light text-dark">Советский</option>
+                        <option value="F" class="bg-light text-dark">Фрунзенский</option>
+                    </select>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-outline-success">Поиск</button>
+                </div>
+            </div>
+        </form>
+    </div>
     {% for office in office_list %}
         <div class="container-md mt-3 mb-3">
             <div class="card" style="width: 48rem;">
